@@ -3,6 +3,7 @@ package com.proyectoestructuras.model;
 import com.proyectoestructuras.ListadDoblementeEnlazada.ListaDoblementeEnlazada;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Artista implements Serializable {
     //Atributos
@@ -10,6 +11,7 @@ public class Artista implements Serializable {
     private String nombre;
     private String nacionalidad;
     private boolean grupo;
+    ArrayList<Cancion> listaCanciones = new ArrayList<Cancion>();
     private ListaDoblementeEnlazada canciones;
 
     //Constructores

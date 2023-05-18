@@ -90,4 +90,15 @@ public class Cancion implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public String toString() {
+        return "Información de la canción\n" +
+                "Nombre: " + nombre + "\n" +
+                "Nombre álbum: " + nombreAlbum + "\n" +
+                "Duración: " + duracion + "\n" +
+                "Año: " + anio + "\n" +
+                "Género: " + genero;
+    }
+
+
 }
