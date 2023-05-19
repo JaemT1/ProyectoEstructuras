@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="469.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.agregarCancionControlador">
+    <children>
+        <AnchorPane layoutY="-1.0" prefHeight="67.0" prefWidth="714.0" style="-fx-background-color: #17202A;">
+            <children>
+                <Label alignment="CENTER" layoutX="14.0" layoutY="16.0" text="Agregar una canción" textFill="WHITE">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="252.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/agregar.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnRegresarMenu" layoutX="621.0" layoutY="19.0" mnemonicParsing="false" onAction="#regresarMenu" style="-fx-background-color: #17202A; -fx-text-fill: white;" text="Regresar">
+                    <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../imagenes/regresar.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="259.0" prefHeight="212.0" prefWidth="714.0" style="-fx-background-color: #808B96;">
+            <children>
+                <Label layoutX="91.0" layoutY="14.0" text="Año:" textFill="WHITE" />
+                <Button fx:id="btnAgregarCancion" layoutX="502.0" layoutY="76.0" mnemonicParsing="false" onAction="#agregarCancion" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Agregar canción" textAlignment="RIGHT" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <image>
+                                <Image url="@../imagenes/agregarCancion.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/año.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnSubirImagen" layoutX="521.0" layoutY="32.0" mnemonicParsing="false" onAction="#subirImagen" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #808B96;" text="Subir imagen" textAlignment="RIGHT" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="21.0">
+                            <image>
+                                <Image url="@../imagenes/subirImagen.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <TextField fx:id="txtAnio" layoutX="183.0" layoutY="17.0" prefHeight="26.0" prefWidth="227.0" />
+                <Label layoutX="78.0" layoutY="67.0" text="Duración:" textFill="WHITE" />
+                <TextField fx:id="txtDuracion" layoutX="183.0" layoutY="63.0" prefHeight="26.0" prefWidth="227.0" />
+                <Label layoutX="82.0" layoutY="114.0" text="Género:" textFill="WHITE" />
+                <TextField fx:id="txtGenero" layoutX="183.0" layoutY="110.0" prefHeight="26.0" prefWidth="227.0" />
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/duracion.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/genero.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="89.0" layoutY="160.0" text="Url:" textFill="WHITE" />
+                <TextField fx:id="txtURL" layoutX="183.0" layoutY="155.0" prefHeight="26.0" prefWidth="227.0" />
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/url.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <Label layoutX="44.0" layoutY="117.0" text="Nombre de la canción:" />
+        <Label layoutX="51.0" layoutY="167.0" text="Nombre del álbum:" />
+        <Label layoutX="77.0" layoutY="219.0" text="Código:" />
+        <ImageView fx:id="imageViewCancion" fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="422.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/nombreCancion.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/nombreAlbum.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="txtNombreCancion" layoutX="183.0" layoutY="113.0" prefHeight="26.0" prefWidth="227.0" />
+        <TextField fx:id="txtNombreAlbum" layoutX="183.0" layoutY="162.0" prefHeight="26.0" prefWidth="227.0" />
+        <TextField fx:id="txtCodigo" layoutX="183.0" layoutY="215.0" prefHeight="26.0" prefWidth="227.0" />
+        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="426.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/codigo.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

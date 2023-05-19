@@ -3,6 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,249 +13,308 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="680.0" prefWidth="1360.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.menuPrincipalControlador">
+<AnchorPane prefHeight="713.0" prefWidth="1354.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.menuPrincipalControlador">
    <children>
-      <Pane prefHeight="95.0" prefWidth="1360.0" style="-fx-background-color: #808B96;" />
-      <Pane layoutY="95.0" prefHeight="591.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;" />
-      <Pane layoutX="224.0" layoutY="95.0" prefHeight="591.0" prefWidth="915.0" style="-fx-background-color: #17202A;">
+      <Pane prefHeight="713.0" prefWidth="1360.0" style="-fx-background-color: #808B96;" />
+      <Pane layoutY="47.0" prefHeight="655.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
          <children>
-            <GridPane layoutX="176.0" layoutY="14.0" prefHeight="553.0" prefWidth="563.0" style="-fx-background-color: #FDFEFE;">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="134.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="138.0" />
+            <TextField fx:id="txtBuscarCancion" alignment="CENTER" layoutX="18.0" layoutY="15.0" promptText="Buscar canción" />
+            <Button fx:id="btnBuscarCancion" layoutX="176.0" layoutY="17.0" mnemonicParsing="false" onAction="#buscarCancion" prefHeight="19.0" prefWidth="23.0" style="-fx-background-color: #D4E6F1;">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
+                     <image>
+                        <Image url="@../imagenes/buscar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Separator layoutX="1.0" layoutY="117.0" prefHeight="3.0" prefWidth="224.0" />
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="18.0" layoutY="136.0">
+               <image>
+                  <Image url="@../imagenes/favorito.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtBuscarArtista" alignment="CENTER" layoutX="18.0" layoutY="60.0" promptText="Buscar artista" />
+            <Button fx:id="btnBuscarArtista" layoutX="176.0" layoutY="60.0" mnemonicParsing="false" onAction="#buscarArtista" prefHeight="19.0" prefWidth="23.0" style="-fx-background-color: #D4E6F1;">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
+                     <image>
+                        <Image url="@../imagenes/buscar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnFavoritos" alignment="TOP_LEFT" layoutX="53.0" layoutY="137.0" mnemonicParsing="false" onAction="#cancionesFavoritas" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #D4E6F1;" text="Mis favoritos">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Separator layoutX="1.0" layoutY="302.0" prefHeight="3.0" prefWidth="224.0" />
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="18.0" layoutY="187.0">
+               <image>
+                  <Image url="@../imagenes/agregarCancion.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnAgregarCancion" alignment="TOP_LEFT" layoutX="53.0" layoutY="188.0" mnemonicParsing="false" onAction="#agregarCancion" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #D4E6F1;" text="Agregar canción">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="25.0" fitWidth="22.0" layoutX="21.0" layoutY="242.0">
+               <image>
+                  <Image url="@../imagenes/agregarArtista.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnAgregarArtista" alignment="TOP_LEFT" layoutX="53.0" layoutY="242.0" mnemonicParsing="false" onAction="#agregarArtista" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #D4E6F1;" text="Agregar artista">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <TreeView fx:id="treeViewFiltros" layoutX="1.0" layoutY="305.0" prefHeight="357.0" prefWidth="224.0" />
+            <Button fx:id="btnAplicarFiltros" layoutX="60.0" layoutY="607.0" mnemonicParsing="false" onAction="#aplicarFiltros" style="-fx-background-color: white;" text="Aplicar filtros">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="14.0">
+                     <image>
+                        <Image url="@../imagenes/filtrar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children></Pane>
+      <Pane layoutX="1136.0" layoutY="51.0" prefHeight="662.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
+         <children>
+            <Label fx:id="info" alignment="CENTER" layoutX="7.0" layoutY="24.0" opacity="0.0" prefHeight="66.0" prefWidth="213.0" text="Información de la canción" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="infoCancion" alignment="CENTER" layoutX="21.0" layoutY="268.0" prefHeight="221.0" prefWidth="186.0" />
+            <ImageView fx:id="imagenInfo" fitHeight="133.0" fitWidth="120.0" layoutX="52.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imagenAgregar" fitHeight="27.0" fitWidth="28.0" layoutX="30.0" layoutY="523.0" opacity="0.0">
+               <image>
+                  <Image url="@../imagenes/favorito.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnAgregarFavs" alignment="TOP_LEFT" layoutX="65.0" layoutY="524.0" mnemonicParsing="false" onAction="#agregarAFavoritos" opacity="0.0" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #D4E6F1;" text="Agregar a favoritos">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReproducir" alignment="TOP_LEFT" layoutX="65.0" layoutY="569.0" mnemonicParsing="false" onAction="#reproducirCancion" opacity="0.0" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #D4E6F1;" text="Reproducir canción">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="imagenReproducir" fitHeight="27.0" fitWidth="28.0" layoutX="30.0" layoutY="568.0" opacity="0.0">
+               <image>
+                  <Image url="@../imagenes/reproducir.png" />
+               </image>
+            </ImageView>
+            <Separator fx:id="separator" layoutY="487.0" opacity="0.0" prefHeight="3.0" prefWidth="224.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="224.0" layoutY="50.0" prefHeight="662.0" prefWidth="914.0" style="-fx-background-color: #17202A;">
+         <children>
+            <GridPane layoutX="176.0" layoutY="54.0" prefHeight="550.0" prefWidth="563.0" style="-fx-background-color: #FDFEFE;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="134.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="138.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="10.0" prefWidth="141.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="154.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Button fx:id="cancion1" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0">
+                  <Button fx:id="btnCancion21" mnemonicParsing="false" onAction="#mostrarInfoCancion2" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/supersonic.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cancion11" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="1">
-                     <padding>
-                        <Insets bottom="1.0" right="1.0" top="1.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="120.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView21" fitHeight="120.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/iHateMyself.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion12" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="142.0" prefWidth="141.0" GridPane.columnIndex="2">
+                  <Button fx:id="btnCancion31" mnemonicParsing="false" onAction="#mostrarInfoCancion3" prefHeight="142.0" prefWidth="141.0" style="-fx-background-color: white;" GridPane.columnIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView31" fitHeight="133.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/yourLove.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion13" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="3">
+                  <Button fx:id="btnCancion41" mnemonicParsing="false" onAction="#mostrarInfoCancion4" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView41" fitHeight="133.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/shapeOfYou.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion14" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0">
+                  <Button fx:id="btnCancion51" mnemonicParsing="false" onAction="#mostrarInfoCancion5" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/supersonic.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cancion15" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.rowIndex="1">
-                     <padding>
-                        <Insets bottom="1.0" right="1.0" top="1.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView51" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/billieJean.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion16" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion81" mnemonicParsing="false" onAction="#mostrarInfoCancion8" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView81" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/electricDreams.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion17" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion71" mnemonicParsing="false" onAction="#mostrarInfoCancion7" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView71" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/supersonic.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion141" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion61" mnemonicParsing="false" onAction="#mostrarInfoCancion6" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView61" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/badRomance.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion18" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion91" mnemonicParsing="false" onAction="#mostrarInfoCancion9" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView91" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/Should_I_Stay_or_Should_I_Go.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion19" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0">
+                  <Button fx:id="btnCancion101" mnemonicParsing="false" onAction="#mostrarInfoCancion10" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imagenes/supersonic.jpg" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="cancion110" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <padding>
-                        <Insets bottom="1.0" right="1.0" top="1.0" />
-                     </padding>
-                     <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView101" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/EllaQuiereBeber.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion111" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion111" mnemonicParsing="false" onAction="#mostrarInfoCancion11" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView111" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/thriller.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion112" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion121" mnemonicParsing="false" onAction="#mostrarInfoCancion12" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView121" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/gasolina.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion113" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion131" mnemonicParsing="false" onAction="#mostrarInfoCancion13" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView131" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/despacito.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion114" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0">
+                  <Button fx:id="btnCancion11" mnemonicParsing="false" onAction="#mostrarInfoCancion1" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView11" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/supersonic.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion115" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="141.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion141" mnemonicParsing="false" onAction="#mostrarInfoCancion14" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView141" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/ramones.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion116" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="139.0" prefWidth="142.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion151" mnemonicParsing="false" onAction="#mostrarInfoCancion15" prefHeight="139.0" prefWidth="142.0" style="-fx-background-color: white;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView151" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/neonNights.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="cancion117" mnemonicParsing="false" onAction="#actualizarInfo" prefHeight="138.0" prefWidth="138.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion161" mnemonicParsing="false" onAction="#mostrarInfoCancion16" prefHeight="138.0" prefWidth="138.0" style="-fx-background-color: white;" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
                      <graphic>
-                        <ImageView fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView161" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../imagenes/comeAsYouAre.jpg" />
                            </image>
@@ -261,11 +323,21 @@
                   </Button>
                </children>
             </GridPane>
-         </children>
-      </Pane>
-      <Pane layoutX="1136.0" layoutY="93.0" prefHeight="591.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
-         <children>
-            <Label fx:id="infoCancion" layoutX="7.0" prefHeight="591.0" prefWidth="213.0" text="Label" />
+            <Label alignment="TOP_CENTER" layoutX="398.0" layoutY="16.0" prefHeight="26.0" prefWidth="120.0" text="En tendencia" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="370.0" layoutY="16.0">
+               <image>
+                  <Image url="@../imagenes/tendencias.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="518.0" layoutY="16.0">
+               <image>
+                  <Image url="@../imagenes/tendencias.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

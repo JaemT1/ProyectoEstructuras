@@ -3,11 +3,13 @@ package com.proyectoestructuras.model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.*;
 
 public class Tienda implements Serializable {
     //Atributos
+
 
     ArrayList<Cancion> listaCanciones = new ArrayList<Cancion>();
     ArbolBinarioArtistas arbolArtistas = new ArbolBinarioArtistas();
@@ -15,16 +17,14 @@ public class Tienda implements Serializable {
 
     //Constructor
     public Tienda() {
-
         crearCanciones();
-
     }
 
     public void crearCanciones() {
 
         //ROCK
         System.out.println(getClass().getResource("/imagenes/comeAsYouAre.jpg"));
-        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/supersonic.jpg"))) , "1991", "3:44", "rock", "https://www.youtube.com/watch?v=vabnZ9-ex7o");
+        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/comeAsYouAre.jpg"))) , "1991", "3:44", "Rock", "https://www.youtube.com/watch?v=vabnZ9-ex7o");
         aniadirCanciones(ca1);
         /**Cancion ca2 = new Cancion("2", "The Unforgiven", "Metallica", new Image("/imagenes/comeAsYouAre.jpg"), "1991", "6:28", "Rock", "https://www.youtube.com/watch?v=Ckom3gf57Yw");
         Cancion ca3 = new Cancion("3", "Your Love", "Play Deep", new Image("/imagenes/yourLove.jpg"), "1985", "4:12", "Rock", "https://www.youtube.com/watch?v=4N1iwQxiHrs");

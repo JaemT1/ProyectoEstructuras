@@ -92,11 +92,10 @@ public class Cancion implements Serializable {
     }
 
     public String toString() {
-        return "Información de la canción\n" +
-                "Nombre: " + nombre + "\n" +
-                "Nombre álbum: " + nombreAlbum + "\n" +
-                "Duración: " + duracion + "\n" +
-                "Año: " + anio + "\n" +
+        return "Nombre: " + nombre + "\n\n" +
+                "Nombre álbum: " + nombreAlbum + "\n\n" +
+                "Duración: " + duracion +" minutos" + "\n\n" +
+                "Año: " + anio + "\n\n" +
                 "Género: " + genero;
     }
 
