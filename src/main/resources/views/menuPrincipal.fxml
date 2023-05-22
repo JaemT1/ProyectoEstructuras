@@ -115,7 +115,7 @@
       </Pane>
       <Pane layoutX="224.0" layoutY="50.0" prefHeight="662.0" prefWidth="914.0" style="-fx-background-color: #17202A;">
          <children>
-            <GridPane layoutX="176.0" layoutY="54.0" prefHeight="550.0" prefWidth="563.0" style="-fx-background-color: #FDFEFE;">
+            <GridPane fx:id="gridPaneCanciones" layoutX="176.0" layoutY="54.0" prefHeight="550.0" prefWidth="563.0" style="-fx-background-color: #FDFEFE;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="134.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="138.0" />
@@ -184,7 +184,7 @@
                      <graphic>
                         <ImageView fx:id="imageView81" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imagenes/electricDreams.jpg" />
+                              <Image url="@../imagenes/teenageKicks.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -196,7 +196,7 @@
                      <graphic>
                         <ImageView fx:id="imageView71" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imagenes/supersonic.jpg" />
+                              <Image url="@../imagenes/otraNocheEnMiami.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -323,21 +323,30 @@
                   </Button>
                </children>
             </GridPane>
-            <Label alignment="TOP_CENTER" layoutX="398.0" layoutY="16.0" prefHeight="26.0" prefWidth="120.0" text="En tendencia" textFill="WHITE">
+            <Label fx:id="titulo" alignment="TOP_CENTER" layoutX="204.0" layoutY="16.0" prefHeight="26.0" prefWidth="508.0" text="En tendencia" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="370.0" layoutY="16.0">
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="176.0" layoutY="16.0">
                <image>
                   <Image url="@../imagenes/tendencias.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="518.0" layoutY="16.0">
+            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="711.0" layoutY="16.0">
                <image>
                   <Image url="@../imagenes/tendencias.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnLimpiarBusqueda" layoutX="389.0" layoutY="618.0" mnemonicParsing="false" onAction="#limpiarBusqueda" style="-fx-background-color: #17202A;" text="Limpiar búsqueda" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../imagenes/limpiar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </children>

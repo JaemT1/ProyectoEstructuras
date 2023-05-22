@@ -12,17 +12,16 @@ public class Artista implements Serializable {
     private String nacionalidad;
     private boolean grupo;
     ArrayList<Cancion> listaCanciones = new ArrayList<Cancion>();
-    private ListaDoblementeEnlazada canciones;
 
     //Constructores
     public Artista() {
     }
-    public Artista(String codigo, String nombre, String nacionalidad, boolean grupo, ListaDoblementeEnlazada canciones) {
+    public Artista(String codigo, String nombre, String nacionalidad, boolean grupo, ArrayList listaCanciones) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
         this.grupo = grupo;
-        this.canciones = canciones;
+        this.listaCanciones = listaCanciones;
     }
 
     //Getters y Setters
@@ -58,11 +57,11 @@ public class Artista implements Serializable {
         this.grupo = grupo;
     }
 
-    public ListaDoblementeEnlazada getCanciones() {
-        return canciones;
+    public ArrayList<Cancion> getListaCanciones() {
+        return listaCanciones;
     }
 
-    public void setCanciones(ListaDoblementeEnlazada canciones) {
-        this.canciones = canciones;
+    public void setListaCanciones(ArrayList<Cancion> listaCanciones) {
+        this.listaCanciones = listaCanciones;
     }
 }

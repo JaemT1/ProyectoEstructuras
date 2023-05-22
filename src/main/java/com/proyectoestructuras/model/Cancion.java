@@ -15,7 +15,11 @@ public class Cancion implements Serializable {
     private String genero;
     private String url;
 
-    public Cancion(String codigo, String nombre, String nombreAlbum, Image caratula, String anio, String duracion, String genero, String url) {
+    private String nombreArtista;
+
+private int indice;
+
+    public Cancion(String codigo, String nombre, String nombreAlbum, Image caratula, String anio, String duracion, String genero, String url, String nombreArtista, int indice) {
         super();
         this.codigo = codigo;
         this.nombre = nombre;
@@ -25,6 +29,8 @@ public class Cancion implements Serializable {
         this.duracion = duracion;
         this.genero = genero;
         this.url = url;
+        this.nombreArtista = nombreArtista;
+        this.indice = indice;
     }
 
     public String getCodigo() {
@@ -89,6 +95,22 @@ public class Cancion implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getNombreArtista() {
+        return nombreArtista;
+    }
+
+    public void setNombreArtista(String nombreArtista) {
+        this.nombreArtista = nombreArtista;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
     }
 
     public String toString() {

@@ -1,12 +1,15 @@
 package com.proyectoestructuras.controladores;
 
 import com.proyectoestructuras.main.Aplicacion;
+import com.proyectoestructuras.model.ArbolBinarioArtistas;
+import com.proyectoestructuras.model.Artista;
 import com.proyectoestructuras.model.Tienda;
 
 public class Singleton {
 
     private Tienda tienda;
     private Aplicacion aplicacion;
+
 
     public void setAplicacion(Aplicacion aplicacion) {
         this.aplicacion = aplicacion;
@@ -39,4 +42,11 @@ public class Singleton {
         aplicacion.mostrarVentana(titulo, ruta);
     }
 
+    public ArbolBinarioArtistas retornarArbol() {
+        return tienda.retornarArbol();
+    }
+
+    public int encontrarIndice(String nombre) {
+        return tienda.encontrarIndice(nombre);
+    }
 }

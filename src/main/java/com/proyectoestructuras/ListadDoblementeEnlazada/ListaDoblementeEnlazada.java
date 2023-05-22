@@ -1,5 +1,10 @@
 package com.proyectoestructuras.ListadDoblementeEnlazada;
 
+import com.proyectoestructuras.model.Cancion;
+import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+
 public class ListaDoblementeEnlazada {
     // Campo para almacenar una referencia al primer nodo de la lista
     Nodo inicio;
@@ -30,4 +35,5 @@ public class ListaDoblementeEnlazada {
             nodoActual = nodoActual.siguiente;
         }
     }
+
 }
