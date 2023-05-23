@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="444.0" prefWidth="707.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.agregarArtistaControlador">
+    <children>
+        <AnchorPane layoutY="-1.0" prefHeight="67.0" prefWidth="707.0" style="-fx-background-color: #17202A;">
+            <children>
+                <Label alignment="CENTER" layoutX="14.0" layoutY="16.0" text="Agregar a un artista" textFill="WHITE">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="252.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/agregar2.png" />
+                    </image>
+                </ImageView>
+                <Button fx:id="btnRegresarMenu" layoutX="598.0" layoutY="19.0" mnemonicParsing="false" onAction="#regresarMenu" style="-fx-background-color: #17202A; -fx-text-fill: white;" text="Regresar">
+                    <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../imagenes/regresar.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutY="259.0" prefHeight="188.0" prefWidth="707.0" style="-fx-background-color: #808B96;">
+            <children>
+                <Button fx:id="btnAgregarArtista" layoutX="34.0" layoutY="139.0" mnemonicParsing="false" onAction="#agregarArtista" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Agregar artista" textAlignment="RIGHT" wrapText="true">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0">
+                            <image>
+                                <Image url="@../imagenes/agregarArtista.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <TextField fx:id="txtGrupo" alignment="CENTER" layoutX="182.0" layoutY="79.0" prefHeight="26.0" prefWidth="227.0" promptText="SI / NO" />
+              <TextField fx:id="txtNacionalidad" alignment="CENTER" layoutX="182.0" layoutY="19.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese la nacionalidad" />
+                <Label layoutX="43.0" layoutY="83.0" text="¿Pertenece a un grupo?" />
+              <Label layoutX="69.0" layoutY="24.0" text="Nacionalidad:" />
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="429.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/año.png" />
+                    </image>
+                </ImageView>
+              <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="425.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../imagenes/ciudadania.png" />
+                  </image>
+              </ImageView>
+            <Label layoutX="525.0" layoutY="41.0" style="-fx-text-fill: white;" text="¿Desea  modificar a un artista?" />
+            <Button fx:id="btnActualizarInfo" layoutX="266.0" layoutY="139.0" mnemonicParsing="false" onAction="#actualizarInformacion" prefHeight="34.0" prefWidth="174.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Actualizar información" textAlignment="RIGHT" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0">
+                     <image>
+                        <Image url="@../imagenes/actualizar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnInformacion" layoutX="540.0" layoutY="67.0" mnemonicParsing="false" onAction="#mostrarInformacion" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Información" textAlignment="RIGHT" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="26.0">
+                     <image>
+                        <Image url="@../imagenes/informacion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            </children>
+        </AnchorPane>
+        <Label alignment="CENTER" layoutX="91.0" layoutY="187.0" text="Código" />
+        <Label layoutX="60.0" layoutY="127.0" text="Nombre del artista:" />
+        <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="423.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/codigo.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="423.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/artista.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="txtCodigo" alignment="CENTER" layoutX="177.0" layoutY="183.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el código" />
+        <TextField fx:id="txtNombreArtista" alignment="CENTER" layoutX="177.0" layoutY="123.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el nombre del artista" />
+      <Separator layoutX="485.0" layoutY="64.0" orientation="VERTICAL" prefHeight="383.0" prefWidth="9.0" />
+      <Label layoutX="530.0" layoutY="100.0" text="¿Desea eliminar un artista?" />
+      <TextField fx:id="txtNombreEliminar" alignment="CENTER" layoutX="537.0" layoutY="137.0" prefHeight="26.0" prefWidth="126.0" promptText="Ingrese el nombre" />
+      <Button fx:id="btnEliminarArtista" layoutX="521.0" layoutY="180.0" mnemonicParsing="false" onAction="#eliminarArtista" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: white; -fx-text-fill: black;" text="Eliminar artista" textAlignment="RIGHT" wrapText="true">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="25.0">
+               <image>
+                  <Image url="@../../../../../../../../../../Users/isa20/Downloads/eliminar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+    </children>
+</AnchorPane>

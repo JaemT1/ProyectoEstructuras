@@ -32,10 +32,9 @@
                     </graphic></Button>
             </children>
         </AnchorPane>
-        <AnchorPane layoutY="259.0" prefHeight="212.0" prefWidth="714.0" style="-fx-background-color: #808B96;">
+        <AnchorPane layoutY="259.0" prefHeight="250.0" prefWidth="714.0" style="-fx-background-color: #808B96;">
             <children>
-                <Label layoutX="91.0" layoutY="14.0" text="Año:" textFill="WHITE" />
-                <Button fx:id="btnAgregarCancion" layoutX="502.0" layoutY="76.0" mnemonicParsing="false" onAction="#agregarCancion" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Agregar canción" textAlignment="RIGHT" wrapText="true">
+                <Button fx:id="btnAgregarCancion" layoutX="218.0" layoutY="201.0" mnemonicParsing="false" onAction="#agregarCancion" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Agregar canción" textAlignment="RIGHT" wrapText="true">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0">
                             <image>
@@ -43,64 +42,84 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                <Label layoutX="77.0" layoutY="22.0" text="Duración:" textFill="WHITE" />
+                <TextField fx:id="txtDuracion" alignment="CENTER" layoutX="183.0" layoutY="18.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese la duración" />
+                <Label layoutX="81.0" layoutY="67.0" text="Género:" textFill="WHITE" />
+                <TextField fx:id="txtGenero" alignment="CENTER" layoutX="183.0" layoutY="63.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el género" />
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../imagenes/año.png" />
+                        <Image url="@../imagenes/duracion.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="btnSubirImagen" layoutX="521.0" layoutY="32.0" mnemonicParsing="false" onAction="#subirImagen" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #808B96;" text="Subir imagen" textAlignment="RIGHT" textFill="WHITE">
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/genero.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="93.0" layoutY="113.0" text="Url:" textFill="WHITE" />
+                <TextField fx:id="txtURL" alignment="CENTER" layoutX="183.0" layoutY="109.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el url" />
+                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../imagenes/url.png" />
+                    </image>
+                </ImageView>
+            <TextField fx:id="txtArtista" alignment="CENTER" layoutX="183.0" layoutY="155.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el nombre del artista" />
+            <Label layoutX="83.0" layoutY="159.0" text="Artista:" textFill="WHITE" />
+            <ImageView fitHeight="26.0" fitWidth="34.0" layoutX="427.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/artista.png" />
+               </image>
+            </ImageView>
+                <Button fx:id="btnSubirImagen" layoutX="517.0" layoutY="202.0" mnemonicParsing="false" onAction="#subirImagen" prefHeight="26.0" prefWidth="120.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Subir imagen" textAlignment="RIGHT" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="21.0">
                             <image>
                                 <Image url="@../imagenes/subirImagen.png" />
                             </image>
                         </ImageView>
-                    </graphic></Button>
-                <TextField fx:id="txtAnio" layoutX="183.0" layoutY="17.0" prefHeight="26.0" prefWidth="227.0" />
-                <Label layoutX="78.0" layoutY="67.0" text="Duración:" textFill="WHITE" />
-                <TextField fx:id="txtDuracion" layoutX="183.0" layoutY="63.0" prefHeight="26.0" prefWidth="227.0" />
-                <Label layoutX="82.0" layoutY="114.0" text="Género:" textFill="WHITE" />
-                <TextField fx:id="txtGenero" layoutX="183.0" layoutY="110.0" prefHeight="26.0" prefWidth="227.0" />
-                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../imagenes/duracion.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../imagenes/genero.png" />
-                    </image>
-                </ImageView>
-                <Label layoutX="89.0" layoutY="160.0" text="Url:" textFill="WHITE" />
-                <TextField fx:id="txtURL" layoutX="183.0" layoutY="155.0" prefHeight="26.0" prefWidth="227.0" />
-                <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../imagenes/url.png" />
-                    </image>
-                </ImageView>
+                    </graphic>
+            </Button>
+              <ImageView fx:id="imageViewCancion" fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" />
             </children>
         </AnchorPane>
-        <Label layoutX="44.0" layoutY="117.0" text="Nombre de la canción:" />
-        <Label layoutX="51.0" layoutY="167.0" text="Nombre del álbum:" />
-        <Label layoutX="77.0" layoutY="219.0" text="Código:" />
-        <ImageView fx:id="imageViewCancion" fitHeight="150.0" fitWidth="200.0" layoutX="480.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="422.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+        <Label layoutX="43.0" layoutY="92.0" text="Nombre de la canción:" />
+        <Label layoutX="51.0" layoutY="134.0" text="Nombre del álbum:" />
+        <Label layoutX="82.0" layoutY="179.0" text="Código:" />
+        <ImageView fitHeight="34.0" fitWidth="38.0" layoutX="422.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagenes/nombreCancion.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="426.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagenes/nombreAlbum.png" />
             </image>
         </ImageView>
-        <TextField fx:id="txtNombreCancion" layoutX="183.0" layoutY="113.0" prefHeight="26.0" prefWidth="227.0" />
-        <TextField fx:id="txtNombreAlbum" layoutX="183.0" layoutY="162.0" prefHeight="26.0" prefWidth="227.0" />
-        <TextField fx:id="txtCodigo" layoutX="183.0" layoutY="215.0" prefHeight="26.0" prefWidth="227.0" />
-        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="426.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+        <TextField fx:id="txtNombreCancion" alignment="CENTER" layoutX="183.0" layoutY="88.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el nombre de la canción" />
+        <TextField fx:id="txtNombreAlbum" alignment="CENTER" layoutX="183.0" layoutY="130.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el nombre del álbum" />
+        <TextField fx:id="txtCodigo" alignment="CENTER" layoutX="183.0" layoutY="175.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el código" />
+        <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="426.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../imagenes/codigo.png" />
             </image>
         </ImageView>
+          <TextField fx:id="txtAnio" alignment="CENTER" layoutX="183.0" layoutY="223.0" prefHeight="26.0" prefWidth="227.0" promptText="Ingrese el año" />
+          <Label layoutX="85.0" layoutY="229.0" text="Año:" />
+          <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="427.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                  <Image url="@../imagenes/año.png" />
+              </image>
+          </ImageView>
+      <Label layoutX="511.0" layoutY="109.0" text="¿Desea eliminar una canción?" />
+      <TextField fx:id="txtCodEliminar" alignment="CENTER" layoutX="499.0" layoutY="143.0" prefHeight="26.0" prefWidth="180.0" promptText="Ingrese el código de la canción" />
+      <Button fx:id="btnEliminarCancion" layoutX="521.0" layoutY="184.0" mnemonicParsing="false" onAction="#eliminarCancion" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: white;" text="Eliminar canción" textAlignment="RIGHT" wrapText="true">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="21.0">
+               <image>
+                  <Image url="@../imagenes/eliminar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>

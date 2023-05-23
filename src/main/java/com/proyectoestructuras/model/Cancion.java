@@ -14,10 +14,8 @@ public class Cancion implements Serializable {
     private String duracion;
     private String genero;
     private String url;
-
     private String nombreArtista;
-
-private int indice;
+    private int indice;
 
     public Cancion(String codigo, String nombre, String nombreAlbum, Image caratula, String anio, String duracion, String genero, String url, String nombreArtista, int indice) {
         super();
@@ -116,7 +114,7 @@ private int indice;
     public String toString() {
         return "Nombre: " + nombre + "\n\n" +
                 "Nombre álbum: " + nombreAlbum + "\n\n" +
-                "Duración: " + duracion +" minutos" + "\n\n" +
+                "Duración: " + duracion + " minutos" + "\n\n" +
                 "Año: " + anio + "\n\n" +
                 "Género: " + genero;
     }

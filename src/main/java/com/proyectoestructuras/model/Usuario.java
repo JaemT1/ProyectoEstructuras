@@ -1,7 +1,5 @@
 package com.proyectoestructuras.model;
 
-import com.proyectoestructuras.ListaCircular.ListaCircularSimple;
-
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
@@ -9,16 +7,14 @@ public class Usuario implements Serializable {
     private String username;
     private String contrasenia;
     private String email;
-    private ListaCircularSimple canciones;
 
     //Constructores
     public Usuario() {
     }
-    public Usuario(String username, String contrasenia, String email, ListaCircularSimple canciones) {
+    public Usuario(String username, String contrasenia, String email) {
         this.username = username;
         this.contrasenia = contrasenia;
         this.email = email;
-        this.canciones = canciones;
     }
 
     //Getters y Setters
@@ -46,11 +42,4 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public ListaCircularSimple getCanciones() {
-        return canciones;
-    }
-
-    public void setCanciones(ListaCircularSimple canciones) {
-        this.canciones = canciones;
-    }
 }

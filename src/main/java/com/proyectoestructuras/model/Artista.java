@@ -1,7 +1,5 @@
 package com.proyectoestructuras.model;
 
-import com.proyectoestructuras.ListadDoblementeEnlazada.ListaDoblementeEnlazada;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
