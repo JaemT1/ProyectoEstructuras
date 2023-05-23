@@ -9,14 +9,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
+import java.awt.*;
+import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
+import java.util.*;
 
 
 public class menuPrincipalControlador implements Initializable {
@@ -32,8 +35,13 @@ public class menuPrincipalControlador implements Initializable {
 
     ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
 
+    static boolean presionadoG = false;
+    static boolean presionadoA = false;
 
     static boolean bandera = false;
+
+    static String linkYoutube = "";
+
     @FXML
     private Button btnAgregarArtista;
 
@@ -219,7 +227,6 @@ public class menuPrincipalControlador implements Initializable {
     private CheckBox anio7 = new CheckBox("2016 - 2026");
 
 
-
     @FXML
     void agregarAFavoritos(ActionEvent event) {
 
@@ -277,6 +284,7 @@ public class menuPrincipalControlador implements Initializable {
         }
 
     }
+
     @FXML
     void buscarArtista(ActionEvent event) {
         limpiarInformacion();
@@ -297,15 +305,16 @@ public class menuPrincipalControlador implements Initializable {
             limpiarInformacion();
         }
     }
+
     @FXML
     void buscarCancion(ActionEvent event) {
         String nombre = txtBuscarCancion.getText();
         boolean bandera = false;
 
-        for (int i = 0; i <listaCanciones.size() ; i++) {
-            if(listaCanciones.get(i).getNombre().equalsIgnoreCase(nombre)){
+        for (int i = 0; i < listaCanciones.size(); i++) {
+            if (listaCanciones.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 titulo.setText("Búsqueda de canción");
-                for (int j = 1; j < imagenes.size() ; j++) {
+                for (int j = 1; j < imagenes.size(); j++) {
                     imagenes.get(0).setImage(listaCanciones.get(i).getCaratula());
                     imagenes.get(j).setOpacity(0);
                     botones.get(j).setVisible(false);
@@ -315,7 +324,9 @@ public class menuPrincipalControlador implements Initializable {
             }
         }
 
-        if(!bandera){
+        limpiar();
+
+        if (!bandera) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Canción no encontrada");
@@ -338,6 +349,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(0).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -346,6 +358,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -358,6 +371,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(9).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -366,6 +380,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -378,6 +393,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(10).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -386,6 +402,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -398,6 +415,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(11).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -406,6 +424,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -417,6 +436,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(12).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -425,6 +445,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -436,6 +457,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(13).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -444,6 +466,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -455,6 +478,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(14).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -463,6 +487,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -475,6 +500,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(15).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -483,6 +509,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -495,6 +522,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(1).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -503,6 +531,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -514,6 +543,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(2).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -522,6 +552,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -533,6 +564,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(3).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -541,6 +573,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -552,6 +585,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(4).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -560,6 +594,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -571,6 +606,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(5).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -579,6 +615,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -590,6 +627,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(6).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -598,6 +636,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -609,6 +648,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(7).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -617,6 +657,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -628,6 +669,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (imagenes.get(8).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
+                    linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
@@ -636,6 +678,7 @@ public class menuPrincipalControlador implements Initializable {
             for (int j = 0; j < canciones.size(); j++) {
                 if (aux.equals(canciones.get(j).getCaratula())) {
                     mostrarInformacion(canciones.get(j).getIndice());
+                    linkYoutube = listaCanciones.get(j).getUrl();
                 }
             }
         }
@@ -644,6 +687,24 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void reproducirCancion(ActionEvent event) {
 
+        abrirCancion(linkYoutube);
+
+        //singleton.setLinkYoutube(linkYoutube);
+        //singleton.mostrarVentana("Video", "/views/reproducirCancion.fxml");
+
+
+    }
+
+    private void abrirCancion(String link) {
+        try {
+            Desktop.getDesktop().browse(new URI(link));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String retornarURL(String link) {
+        return link;
     }
 
     @FXML
@@ -819,113 +880,164 @@ public class menuPrincipalControlador implements Initializable {
         String genero = obtenerGenero();
         int anio = obtenerAnio();
 
-        if (verificarGenero()) {
+        if (verificarAnio() && verificarGenero()) {
+            filtrarAnioGenero(genero, anio);
+        } else if (verificarGenero()) {
             filtroGeneros(genero);
         } else if (verificarAnio()) {
             filtroAnios(anio);
-        } else if(verificarAnio() && verificarGenero()){
-            filtrarAnioGenero(genero, anio);
-        }else {
-            singleton.mostrarMensaje("Filtros incorrectos", "Filtros incorrectos",
-                    "Debe seleccionar solo una opción tanto de género como años", Alert.AlertType.WARNING);
+        } else {
+            singleton.mostrarMensaje("Error", "Error de seleccionado", "Seleccione una sola opción.", Alert.AlertType.WARNING);
         }
 
     }
 
     private void filtrarAnioGenero(String genero, int anio) {
-
-            int j = 0;
-            int cont = 0;
-            int valor;
-            int limite = anio - 10;
-
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                valor = anio;
-                if (j < imagenes.size()) {
-                    do {
-                        String aux = String.valueOf(valor);
-                        if (listaCanciones.get(i).getAnio().equalsIgnoreCase(aux) && listaCanciones.get(i).getGenero().equalsIgnoreCase(genero)) {
-                            imagenes.get(j).setImage(listaCanciones.get(i).getCaratula());
-                            imagenes.get(j).setOpacity(100);
-                            botones.get(j).setVisible(true);
-                            j++;
-                            cont++;
-                        }
-                        valor = valor-1;
-                    } while (valor != limite);
-                }
-
-            }
-
-            if(cont!=0) {
-                for (int i = cont; i < imagenes.size(); i++) {
-                    imagenes.get(i).setImage(null);
-                    imagenes.get(i).setOpacity(0);
-                    botones.get(i).setVisible(false);
-                }
-            }else{
-                singleton.mostrarMensaje("No hay canciones", "No hay canciones",
-                        "No hay canciones con los filtros seleccionados", Alert.AlertType.WARNING);
-            }
-    }
-
-    private void filtroAnios(int anio) {
-
         int j = 0;
         int cont = 0;
         int valor;
         int limite = anio - 10;
+
+        // Crear una lista auxiliar para almacenar las canciones filtradas
+        ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
 
         for (int i = 0; i < listaCanciones.size(); i++) {
             valor = anio;
             if (j < imagenes.size()) {
                 do {
                     String aux = String.valueOf(valor);
-                    if (listaCanciones.get(i).getAnio().equalsIgnoreCase(aux)) {
-                        imagenes.get(j).setImage(listaCanciones.get(i).getCaratula());
-                        imagenes.get(j).setOpacity(100);
-                        botones.get(j).setVisible(true);
-                        j++;
+                    Cancion cancion = listaCanciones.get(i);
+                    if (cancion.getAnio().equalsIgnoreCase(aux) && cancion.getGenero().equalsIgnoreCase(genero)) {
+                        cancionesFiltradas.add(cancion);
                         cont++;
                     }
-                    valor = valor-1;
+                    valor = valor - 1;
                 } while (valor != limite);
             }
-
         }
 
-        if(cont!=0) {
+        if (cont != 0) {
+            // Ordenar las canciones por el nombre en orden alfabético
+            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
+                @Override
+                public int compare(Cancion cancion1, Cancion cancion2) {
+                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
+                }
+            });
+
+            // Establecer las canciones ordenadas en las ImageView
+            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
+                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
+                imagenes.get(i).setOpacity(100);
+                botones.get(i).setVisible(true);
+            }
+
+            // Restablecer las ImageView restantes
             for (int i = cont; i < imagenes.size(); i++) {
+                imagenes.get(i).setImage(null);
                 imagenes.get(i).setOpacity(0);
                 botones.get(i).setVisible(false);
             }
-        }else{
-            singleton.mostrarMensaje("No hay canciones", "No hay canciones",
-                    "No hay canciones con este rango de años", Alert.AlertType.WARNING);
-        }
 
+            titulo.setText("Canciones de " + genero + " del año " + limite + " al " + anio);
+        } else {
+            singleton.mostrarMensaje("No hay canciones", "No hay canciones",
+                    "No hay canciones con los filtros seleccionados", Alert.AlertType.WARNING);
+        }
     }
+
+
 
     private void filtroGeneros(String genero) {
         int j = 0;
         int cont = 0;
+
+        ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
+
         if (j < imagenes.size()) {
             for (int i = 0; i < listaCanciones.size(); i++) {
                 if (listaCanciones.get(i).getGenero().equalsIgnoreCase(genero)) {
-                    imagenes.get(j).setImage(listaCanciones.get(i).getCaratula());
-                    imagenes.get(j).setOpacity(100);
-                    botones.get(j).setVisible(true);
-                    j++;
+                    cancionesFiltradas.add(listaCanciones.get(i));
                     cont++;
                 }
             }
-
         }
-        for (int i = cont - 1; i < imagenes.size(); i++) {
-            imagenes.get(i).setOpacity(0);
-            botones.get(i).setVisible(false);
+
+        if (cont != 0) {
+            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
+                @Override
+                public int compare(Cancion cancion1, Cancion cancion2) {
+                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
+                }
+            });
+
+            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
+                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
+                imagenes.get(i).setOpacity(100);
+                botones.get(i).setVisible(true);
+            }
+
+            for (int i = cont; i < imagenes.size(); i++) {
+                imagenes.get(i).setOpacity(0);
+                botones.get(i).setVisible(false);
+            }
+
+            titulo.setText("Canciones de " + genero);
+        } else {
+            singleton.mostrarMensaje("No hay canciones", "No hay canciones",
+                    "No hay canciones de este género", Alert.AlertType.WARNING);
         }
     }
+
+    private void filtroAnios(int anio) {
+        int j = 0;
+        int cont = 0;
+        int valor;
+        int limite = anio - 10;
+
+        ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
+
+        for (int i = 0; i < listaCanciones.size(); i++) {
+            valor = anio;
+            if (j < imagenes.size()) {
+                do {
+                    String aux = String.valueOf(valor);
+                    Cancion cancion = listaCanciones.get(i);
+                    if (cancion.getAnio().equalsIgnoreCase(aux)) {
+                        cancionesFiltradas.add(cancion);
+                        cont++;
+                    }
+                    valor = valor - 1;
+                } while (valor != limite);
+            }
+        }
+
+        if (cont != 0) {
+            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
+                @Override
+                public int compare(Cancion cancion1, Cancion cancion2) {
+                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
+                }
+            });
+
+            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
+                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
+                imagenes.get(i).setOpacity(100);
+                botones.get(i).setVisible(true);
+            }
+
+            for (int i = cont; i < imagenes.size(); i++) {
+                imagenes.get(i).setOpacity(0);
+                botones.get(i).setVisible(false);
+            }
+
+            titulo.setText("Canciones del año " + limite + " al " + anio);
+        } else {
+            singleton.mostrarMensaje("No hay canciones", "No hay canciones",
+                    "No hay canciones con este rango de años", Alert.AlertType.WARNING);
+        }
+    }
+
 
     private int obtenerAnio() {
         int anio = 0;
@@ -938,23 +1050,23 @@ public class menuPrincipalControlador implements Initializable {
 
             anio = 1971;
 
-        }else if (anio3.isSelected()) {
+        } else if (anio3.isSelected()) {
 
             anio = 1982;
 
-        }else if (anio4.isSelected()) {
+        } else if (anio4.isSelected()) {
 
             anio = 1993;
 
-        }else if (anio5.isSelected()) {
+        } else if (anio5.isSelected()) {
 
             anio = 2004;
 
-        }else if (anio6.isSelected()) {
+        } else if (anio6.isSelected()) {
 
             anio = 2015;
 
-        }else if (anio7.isSelected()) {
+        } else if (anio7.isSelected()) {
 
             anio = 2026;
         }
@@ -1008,31 +1120,31 @@ public class menuPrincipalControlador implements Initializable {
                     cont++;
                 }
 
-            }else if(i==2){
+            } else if (i == 2) {
 
                 if (anio3.isSelected()) {
                     cont++;
                 }
 
-        }else if (i == 3) {
+            } else if (i == 3) {
 
                 if (anio4.isSelected()) {
                     cont++;
                 }
 
-            }else if (i == 4) {
+            } else if (i == 4) {
 
                 if (anio5.isSelected()) {
                     cont++;
                 }
 
-            }else if (i == 5) {
+            } else if (i == 5) {
 
                 if (anio6.isSelected()) {
                     cont++;
                 }
 
-            }else if (i == 6) {
+            } else if (i == 6) {
 
                 if (anio7.isSelected()) {
                     cont++;
@@ -1045,7 +1157,6 @@ public class menuPrincipalControlador implements Initializable {
         if (cont == 1) {
             return true;
         }
-
         return false;
     }
 
@@ -1057,6 +1168,7 @@ public class menuPrincipalControlador implements Initializable {
             if (i == 0) {
                 if (genero1.isSelected()) {
                     cont++;
+                    break;
                 }
             } else if (i == 1) {
                 if (genero2.isSelected()) {
@@ -1086,6 +1198,14 @@ public class menuPrincipalControlador implements Initializable {
         }
 
         return false;
+    }
+
+    public static String getLinkYoutube() {
+        return linkYoutube;
+    }
+
+    public static void setLinkYoutube(String linkYoutube) {
+        menuPrincipalControlador.linkYoutube = linkYoutube;
     }
 }
 

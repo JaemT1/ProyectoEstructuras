@@ -15,6 +15,8 @@ public class Singleton {
     private Tienda tienda;
     private Aplicacion aplicacion;
 
+    private String linkYoutube;
+
 
     public void setAplicacion(Aplicacion aplicacion) {
         this.aplicacion = aplicacion;
@@ -100,5 +102,11 @@ public class Singleton {
         return tienda.retornarArbol();
     }
 
+    public String getLinkYoutube() {
+        return linkYoutube;
+    }
 
+    public void setLinkYoutube(String linkYoutube) {
+        this.linkYoutube = linkYoutube;
+    }
 }

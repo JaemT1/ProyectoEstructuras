@@ -3,6 +3,8 @@ module com.proyectoestructuras.main {
     requires javafx.fxml;
     requires java.logging;
     requires java.desktop;
+    requires javafx.web;
+    requires javafx.media;
 
 
     opens com.proyectoestructuras.main to javafx.graphics, javafx.fxml;
