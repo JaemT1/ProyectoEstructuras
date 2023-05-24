@@ -35,8 +35,8 @@ public class menuPrincipalControlador implements Initializable {
 
     ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
 
-    static boolean presionadoG = false;
-    static boolean presionadoA = false;
+    static boolean busquedaO = false;
+    static boolean busquedaY = false;
 
     static boolean bandera = false;
 
@@ -116,6 +116,12 @@ public class menuPrincipalControlador implements Initializable {
 
     @FXML
     private Button btnLimpiarBusqueda;
+
+    @FXML
+    private Button btnBusquedaO;
+
+    @FXML
+    private Button btnBusquedaY;
 
     @FXML
     private GridPane gridPaneCanciones;
@@ -377,6 +383,7 @@ public class menuPrincipalControlador implements Initializable {
 
         }
     }
+
     @FXML
     void reproducirCancion(ActionEvent event) {
 
@@ -403,7 +410,6 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void aplicarFiltros(ActionEvent event) {
         filtrarCanciones();
-        System.out.println(btnAgregarArtista.getOnAction());
 
         anio1.setSelected(false);
         anio2.setSelected(false);
@@ -575,17 +581,27 @@ public class menuPrincipalControlador implements Initializable {
         String genero = obtenerGenero();
         int anio = obtenerAnio();
 
-        if (verificarAnio() && verificarGenero()) {
-            filtrarAnioGenero(genero, anio);
-        } else if (verificarGenero()) {
-            filtroGeneros(genero);
-        } else if (verificarAnio()) {
-            filtroAnios(anio);
+        if (busquedaY) {
+            if (verificarAnio() && verificarGenero()) {
+                filtrarAnioGenero(genero, anio);
+                busquedaY = false;
+            }
+        } else if (busquedaO) {
+            if (verificarAnio() && verificarGenero()) {
+                filtrarAnioGenero(genero, anio);
+                busquedaO = false;
+            }
         } else {
-            singleton.mostrarMensaje("Error", "Error de seleccionado", "Seleccione una sola opción.", Alert.AlertType.WARNING);
+            if (verificarGenero()) {
+                filtroGeneros(genero);
+            } else if (verificarAnio()) {
+                filtroAnios(anio);
+            } else {
+                singleton.mostrarMensaje("Error", "Error de seleccionado", "Seleccione una sola opción.", Alert.AlertType.WARNING);
+            }
         }
-
     }
+
 
     private void filtrarAnioGenero(String genero, int anio) {
         int j = 0;
@@ -602,7 +618,7 @@ public class menuPrincipalControlador implements Initializable {
                 do {
                     String aux = String.valueOf(valor);
                     Cancion cancion = listaCanciones.get(i);
-                    if (cancion.getAnio().equalsIgnoreCase(aux) && cancion.getGenero().equalsIgnoreCase(genero)) {
+                    if (cancion.getAnio().equalsIgnoreCase(aux) || cancion.getGenero().equalsIgnoreCase(genero)) {
                         cancionesFiltradas.add(cancion);
                         cont++;
                     }
@@ -648,14 +664,13 @@ public class menuPrincipalControlador implements Initializable {
 
         ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
 
-        if (j < imagenes.size()) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (listaCanciones.get(i).getGenero().equalsIgnoreCase(genero)) {
-                    cancionesFiltradas.add(listaCanciones.get(i));
-                    cont++;
-                }
+        for (int i = 0; i < listaCanciones.size(); i++) {
+            if (listaCanciones.get(i).getGenero().equalsIgnoreCase(genero)) {
+                cancionesFiltradas.add(listaCanciones.get(i));
+                cont++;
             }
         }
+
 
         if (cont != 0) {
             Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
@@ -862,7 +877,6 @@ public class menuPrincipalControlador implements Initializable {
             if (i == 0) {
                 if (genero1.isSelected()) {
                     cont++;
-                    break;
                 }
             } else if (i == 1) {
                 if (genero2.isSelected()) {
@@ -879,7 +893,6 @@ public class menuPrincipalControlador implements Initializable {
                 }
 
             } else if (i == 4) {
-
                 if (genero5.isSelected()) {
                     cont++;
                 }
@@ -893,6 +906,40 @@ public class menuPrincipalControlador implements Initializable {
 
         return false;
     }
+
+    @FXML
+    void buscarO(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Información de búsqueda de canción");
+        alert.setHeaderText("Se le mostrarán las canciones que cumplen con al menos uno" +
+                " de los dos filtros seleccionados.");
+        alert.setContentText("¿Desea continuar con la búsqueda?");
+        Optional<ButtonType> action = alert.showAndWait();
+
+        if (action.get() == ButtonType.OK) {
+            busquedaO = true;
+            filtrarCanciones();
+        }
+
+    }
+
+    @FXML
+    void buscarY(ActionEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Información de búsqueda de canción");
+        alert.setHeaderText("Se le mostrarán las canciones que cumplen con " +
+                "los dos filtros seleccionados.");
+        alert.setContentText("¿Desea continuar con la búsqueda?");
+        Optional<ButtonType> action = alert.showAndWait();
+
+        if (action.get() == ButtonType.OK) {
+            busquedaY = true;
+            filtrarCanciones();
+        }
+    }
+
 
     public static String getLinkYoutube() {
         return linkYoutube;

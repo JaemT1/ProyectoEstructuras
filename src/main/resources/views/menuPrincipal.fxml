@@ -17,10 +17,10 @@
 
 <AnchorPane prefHeight="713.0" prefWidth="1354.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.menuPrincipalControlador">
    <children>
-      <Pane prefHeight="713.0" prefWidth="1360.0" style="-fx-background-color: #808B96;">
+      <Pane prefHeight="738.0" prefWidth="1360.0" style="-fx-background-color: #808B96;">
          <children>
-            <TreeView fx:id="treeViewFiltros" layoutX="-3.0" layoutY="303.0" prefHeight="407.0" prefWidth="232.0" />
-            <Button fx:id="btnAplicarFiltros" layoutX="61.0" layoutY="675.0" mnemonicParsing="false" onAction="#aplicarFiltros" style="-fx-background-color: white;" text="Aplicar filtros">
+            <TreeView fx:id="treeViewFiltros" layoutX="-3.0" layoutY="303.0" prefHeight="437.0" prefWidth="232.0" />
+            <Button fx:id="btnAplicarFiltros" layoutX="50.0" layoutY="706.0" mnemonicParsing="false" onAction="#aplicarFiltros" style="-fx-background-color: white;" text="Búsqueda normal">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="14.0">
                      <image>
@@ -29,6 +29,8 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Button fx:id="btnBusquedaO" layoutX="21.0" layoutY="671.0" mnemonicParsing="false" onAction="#buscarO" style="-fx-background-color: white;" text="Búsqueda O" />
+            <Button fx:id="btnBusquedaY" layoutX="113.0" layoutY="671.0" mnemonicParsing="false" onAction="#buscarY" style="-fx-background-color: white;" text="Búsqueda Y" />
          </children></Pane>
       <Pane layoutY="47.0" prefHeight="257.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
          <children>
@@ -116,7 +118,7 @@
             <Separator fx:id="separator" layoutY="487.0" opacity="0.0" prefHeight="3.0" prefWidth="224.0" />
          </children>
       </Pane>
-      <Pane layoutX="224.0" layoutY="50.0" prefHeight="662.0" prefWidth="914.0" style="-fx-background-color: #17202A;">
+      <Pane layoutX="224.0" layoutY="50.0" prefHeight="688.0" prefWidth="914.0" style="-fx-background-color: #17202A;">
          <children>
             <GridPane fx:id="gridPaneCanciones" layoutX="176.0" layoutY="54.0" prefHeight="550.0" prefWidth="563.0" style="-fx-background-color: #FDFEFE;">
                <columnConstraints>
