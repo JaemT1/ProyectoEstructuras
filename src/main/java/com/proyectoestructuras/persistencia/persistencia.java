@@ -22,8 +22,6 @@ public class persistencia {
 
         try {
             ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_TIENDA_BINARIO, tienda);
-            // Revisar si en binario guarda el tipo Image, de lo contrario, hay que
-            // buscar cómo hacerlo
         } catch (Exception e) {
             e.printStackTrace();
         }

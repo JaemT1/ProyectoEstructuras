@@ -310,6 +310,7 @@ public class menuPrincipalControlador implements Initializable {
     void buscarCancion(ActionEvent event) {
         String nombre = txtBuscarCancion.getText();
         boolean bandera = false;
+        limpiarInformacion();
 
         for (int i = 0; i < listaCanciones.size(); i++) {
             if (listaCanciones.get(i).getNombre().equalsIgnoreCase(nombre)) {
@@ -343,347 +344,39 @@ public class menuPrincipalControlador implements Initializable {
     }
 
     @FXML
-    void mostrarInfoCancion1(ActionEvent event) {
+    void mostrarInformacionCancion(ActionEvent event) {
+
+
+        Button prueba = (Button) event.getSource();
+        int id = Integer.parseInt(prueba.getText());
 
         if (!bandera) {
             for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(0).getImage().equals(listaCanciones.get(i).getCaratula())) {
+                if (imagenes.get(id).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
                     linkYoutube = listaCanciones.get(i).getUrl();
                     break;
                 }
             }
+
+
         } else {
-            Image aux = imageView11.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
 
-    }
+            for (int i = 0; i < imagenes.size(); i++) {
+                Image aux = imagenes.get(i).getImage();
+                int aux2 = Integer.parseInt(imagenes.get(i).getAccessibleText());
+                if (id == aux2) {
+                    for (int j = 0; j < canciones.size(); j++) {
+                        if (aux.equals(canciones.get(j).getCaratula())) {
+                            mostrarInformacion(canciones.get(j).getIndice());
+                            linkYoutube = listaCanciones.get(j).getUrl();
+                        }
+                    }
+                }
+            }
 
-    @FXML
-    void mostrarInfoCancion10(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(9).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView101.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-
-    }
-
-    @FXML
-    void mostrarInfoCancion11(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(10).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView111.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-
-    }
-
-    @FXML
-    void mostrarInfoCancion12(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(11).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView121.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
         }
     }
-
-    @FXML
-    void mostrarInfoCancion13(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(12).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView131.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion14(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(13).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView141.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion15(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(14).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView151.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion16(ActionEvent event) {
-
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(15).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView161.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-
-    }
-
-    @FXML
-    void mostrarInfoCancion2(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(1).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView21.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion3(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(2).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView31.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion4(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(3).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView41.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion5(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(4).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView51.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion6(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(5).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView61.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion7(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(6).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView71.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion8(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(7).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView81.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
-    @FXML
-    void mostrarInfoCancion9(ActionEvent event) {
-        if (!bandera) {
-            for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(8).getImage().equals(listaCanciones.get(i).getCaratula())) {
-                    mostrarInformacion(listaCanciones.get(i).getIndice());
-                    linkYoutube = listaCanciones.get(i).getUrl();
-                    break;
-                }
-            }
-        } else {
-            Image aux = imageView91.getImage();
-            for (int j = 0; j < canciones.size(); j++) {
-                if (aux.equals(canciones.get(j).getCaratula())) {
-                    mostrarInformacion(canciones.get(j).getIndice());
-                    linkYoutube = listaCanciones.get(j).getUrl();
-                }
-            }
-        }
-    }
-
     @FXML
     void reproducirCancion(ActionEvent event) {
 
@@ -710,6 +403,8 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void aplicarFiltros(ActionEvent event) {
         filtrarCanciones();
+        System.out.println(btnAgregarArtista.getOnAction());
+
         anio1.setSelected(false);
         anio2.setSelected(false);
         anio3.setSelected(false);
@@ -945,7 +640,6 @@ public class menuPrincipalControlador implements Initializable {
                     "No hay canciones con los filtros seleccionados", Alert.AlertType.WARNING);
         }
     }
-
 
 
     private void filtroGeneros(String genero) {

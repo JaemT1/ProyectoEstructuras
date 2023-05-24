@@ -5,6 +5,7 @@ import com.proyectoestructuras.model.ArbolBinarioArtistas;
 import com.proyectoestructuras.model.Artista;
 import com.proyectoestructuras.model.Cancion;
 import com.proyectoestructuras.model.Tienda;
+import com.proyectoestructuras.persistencia.persistencia;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 
@@ -14,7 +15,6 @@ public class Singleton {
 
     private Tienda tienda;
     private Aplicacion aplicacion;
-
     private String linkYoutube;
 
 
@@ -104,6 +104,10 @@ public class Singleton {
 
     public String getLinkYoutube() {
         return linkYoutube;
+    }
+
+    public void serializarBinario(){
+        persistencia.guardarRecursoTiendaBinario(tienda);
     }
 
     public void setLinkYoutube(String linkYoutube) {

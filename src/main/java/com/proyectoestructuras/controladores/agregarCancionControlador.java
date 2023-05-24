@@ -161,6 +161,7 @@ public class agregarCancionControlador {
             singleton.mostrarMensaje("Canción inválida", "Canción no creada",
                     "Debe subir una imagen para agregar la canción", Alert.AlertType.WARNING);
         }
+        singleton.serializarBinario();
 
     }
 

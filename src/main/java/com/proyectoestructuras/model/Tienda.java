@@ -23,7 +23,7 @@ public class Tienda implements Serializable {
         ArrayList aux = new ArrayList();
 
         //ROCK
-        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/comeAsYouAre.jpg"))), "1991", "3:44", "Rock", "https://www.youtube.com/watch?v=vabnZ9-ex7o", "Nirvana", 0);
+        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/comeAsYouAre.jpg"))), "1991", "3:44", "comeAsYouAre", "https://www.youtube.com/watch?v=vabnZ9-ex7o", "Nirvana", 0);
         Cancion ca2 = new Cancion("2", "The Unforgiven", "Metallica", new Image(String.valueOf(getClass().getResource("/imagenes/theUnforgiven.jpg"))), "1991", "6:28", "Rock", "https://www.youtube.com/watch?v=Ckom3gf57Yw", "Metallica", 1);
         Cancion ca3 = new Cancion("3", "Your Love", "Play Deep", new Image(String.valueOf(getClass().getResource("/imagenes/yourLove.jpg"))), "1985", "4:12", "Rock", "https://www.youtube.com/watch?v=4N1iwQxiHrs", "The Outfield", 2);
         Cancion ca4 = new Cancion("4", "I Hate Myself for Loving You", "Up Your Alley", new Image(String.valueOf(getClass().getResource("/imagenes/iHateMyself.jpg"))), "1988", "4:17", "Rock", "https://www.youtube.com/watch?v=bpNw7jYkbVc", "Joan Jett & The Blackhearts", 3);
