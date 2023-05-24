@@ -35,12 +35,12 @@ public class menuPrincipalControlador implements Initializable {
 
     ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
 
-    static boolean busquedaO = false;
-    static boolean busquedaY = false;
-
     static boolean bandera = false;
 
     static String linkYoutube = "";
+
+    boolean auxO = false;
+    boolean auxY = false;
 
     @FXML
     private Button btnAgregarArtista;
@@ -52,7 +52,9 @@ public class menuPrincipalControlador implements Initializable {
     private Button btnAgregarFavs;
 
     @FXML
-    private Button btnAplicarFiltros;
+    private Button btnAplicarFiltrosY;
+    @FXML
+    private Button btnAplicarFiltrosO;
 
     @FXML
     private Button btnBuscarArtista;
@@ -408,7 +410,27 @@ public class menuPrincipalControlador implements Initializable {
     }
 
     @FXML
-    void aplicarFiltros(ActionEvent event) {
+    void aplicarFiltrosY(ActionEvent event) {
+        auxY = true;
+        filtrarCanciones();
+
+        anio1.setSelected(false);
+        anio2.setSelected(false);
+        anio3.setSelected(false);
+        anio4.setSelected(false);
+        anio5.setSelected(false);
+        anio6.setSelected(false);
+        anio7.setSelected(false);
+        genero1.setSelected(false);
+        genero2.setSelected(false);
+        genero3.setSelected(false);
+        genero4.setSelected(false);
+        genero5.setSelected(false);
+    }
+
+    @FXML
+    void aplicarFiltrosO(ActionEvent event) {
+        auxO = true;
         filtrarCanciones();
 
         anio1.setSelected(false);
@@ -526,7 +548,6 @@ public class menuPrincipalControlador implements Initializable {
             imagenes.get(j).setOpacity(100);
             imagenes.get(j).setImage(aux);
             botones.get(j).setVisible(true);
-
         }
 
     }
@@ -581,85 +602,120 @@ public class menuPrincipalControlador implements Initializable {
         String genero = obtenerGenero();
         int anio = obtenerAnio();
 
-        if (busquedaY) {
+        if (auxO) {
             if (verificarAnio() && verificarGenero()) {
                 filtrarAnioGenero(genero, anio);
-                busquedaY = false;
-            }
-        } else if (busquedaO) {
-            if (verificarAnio() && verificarGenero()) {
-                filtrarAnioGenero(genero, anio);
-                busquedaO = false;
-            }
-        } else {
-            if (verificarGenero()) {
+                auxO = false;
+            } else if (verificarGenero()) {
                 filtroGeneros(genero);
+                auxO = false;
             } else if (verificarAnio()) {
                 filtroAnios(anio);
+                auxO = false;
             } else {
                 singleton.mostrarMensaje("Error", "Error de seleccionado", "Seleccione una sola opción.", Alert.AlertType.WARNING);
             }
         }
+
+        if (auxY) {
+            if (verificarAnio() && verificarGenero()) {
+                filtrarAnioGenero(genero, anio);
+                auxY = false;
+            } else if (verificarGenero()) {
+                filtroGeneros(genero);
+                auxY = false;
+            } else if (verificarAnio()) {
+                filtroAnios(anio);
+                auxY = false;
+            } else {
+                singleton.mostrarMensaje("Error", "Error de seleccionado", "Seleccione una sola opción.", Alert.AlertType.WARNING);
+            }
+        }
+
     }
 
 
     private void filtrarAnioGenero(String genero, int anio) {
-        int j = 0;
         int cont = 0;
         int valor;
-        int limite = anio - 10;
+        int limite = anio - 11;
 
         // Crear una lista auxiliar para almacenar las canciones filtradas
         ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
 
+
         for (int i = 0; i < listaCanciones.size(); i++) {
             valor = anio;
-            if (j < imagenes.size()) {
-                do {
-                    String aux = String.valueOf(valor);
-                    Cancion cancion = listaCanciones.get(i);
-                    if (cancion.getAnio().equalsIgnoreCase(aux) || cancion.getGenero().equalsIgnoreCase(genero)) {
+            do {
+                String aux = String.valueOf(valor);
+                Cancion cancion = listaCanciones.get(i);
+                if (auxO) {
+                    if (cancion.getAnio().equalsIgnoreCase(aux)) {
+                        cancionesFiltradas.add(cancion);
+                        cont++;
+                        break;
+                    }
+                    if (cancion.getGenero().equalsIgnoreCase(genero) && !cancion.getAnio().equalsIgnoreCase(aux)) {
+                        cancionesFiltradas.add(cancion);
+                        cont++;
+                        break;
+                    }
+                } else if (auxY) {
+                    if (cancion.getAnio().equalsIgnoreCase(aux) && cancion.getGenero().equalsIgnoreCase(genero)) {
                         cancionesFiltradas.add(cancion);
                         cont++;
                     }
-                    valor = valor - 1;
-                } while (valor != limite);
-            }
+
+                }
+                valor = valor - 1;
+            } while (valor != limite);
         }
 
         if (cont != 0) {
-            // Ordenar las canciones por el nombre en orden alfabético
-            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
-                @Override
-                public int compare(Cancion cancion1, Cancion cancion2) {
-                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
-                }
-            });
-
-            // Establecer las canciones ordenadas en las ImageView
-            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
-                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
-                imagenes.get(i).setOpacity(100);
-                botones.get(i).setVisible(true);
+            if (auxO) {
+                titulo.setText("Canciones de " + genero + " o del año " + (limite + 1) + " al " + anio);
+                organizarListaCanciones(cancionesFiltradas, cont);
             }
 
-            // Restablecer las ImageView restantes
-            for (int i = cont; i < imagenes.size(); i++) {
-                imagenes.get(i).setImage(null);
-                imagenes.get(i).setOpacity(0);
-                botones.get(i).setVisible(false);
+            if (auxY) {
+                titulo.setText("Canciones de " + genero + " y del año " + (limite + 1) + " al " + anio);
+                organizarListaCanciones(cancionesFiltradas, cont);
+
             }
 
-            titulo.setText("Canciones de " + genero + " del año " + limite + " al " + anio);
+
         } else {
             singleton.mostrarMensaje("No hay canciones", "No hay canciones",
                     "No hay canciones con los filtros seleccionados", Alert.AlertType.WARNING);
         }
     }
 
+    void organizarListaCanciones(ArrayList<Cancion> aux, int cont) {
+
+        Collections.sort(aux, new Comparator<Cancion>() {
+            @Override
+            public int compare(Cancion cancion1, Cancion cancion2) {
+                return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
+            }
+        });
+
+        // Establecer las canciones ordenadas en las ImageView
+        for (int i = 0; i < aux.size() && i < imagenes.size(); i++) {
+            imagenes.get(i).setImage(aux.get(i).getCaratula());
+            imagenes.get(i).setOpacity(100);
+            botones.get(i).setVisible(true);
+        }
+
+        // Restablecer las ImageView restantes
+        for (int i = cont; i < imagenes.size(); i++) {
+            imagenes.get(i).setImage(null);
+            imagenes.get(i).setOpacity(0);
+            botones.get(i).setVisible(false);
+        }
+    }
+
 
     private void filtroGeneros(String genero) {
-        int j = 0;
         int cont = 0;
 
         ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
@@ -671,26 +727,8 @@ public class menuPrincipalControlador implements Initializable {
             }
         }
 
-
         if (cont != 0) {
-            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
-                @Override
-                public int compare(Cancion cancion1, Cancion cancion2) {
-                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
-                }
-            });
-
-            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
-                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
-                imagenes.get(i).setOpacity(100);
-                botones.get(i).setVisible(true);
-            }
-
-            for (int i = cont; i < imagenes.size(); i++) {
-                imagenes.get(i).setOpacity(0);
-                botones.get(i).setVisible(false);
-            }
-
+            organizarListaCanciones(cancionesFiltradas, cont);
             titulo.setText("Canciones de " + genero);
         } else {
             singleton.mostrarMensaje("No hay canciones", "No hay canciones",
@@ -699,48 +737,30 @@ public class menuPrincipalControlador implements Initializable {
     }
 
     private void filtroAnios(int anio) {
-        int j = 0;
+
         int cont = 0;
         int valor;
-        int limite = anio - 10;
+        int limite = anio - 11;
 
         ArrayList<Cancion> cancionesFiltradas = new ArrayList<>();
 
         for (int i = 0; i < listaCanciones.size(); i++) {
             valor = anio;
-            if (j < imagenes.size()) {
-                do {
-                    String aux = String.valueOf(valor);
-                    Cancion cancion = listaCanciones.get(i);
-                    if (cancion.getAnio().equalsIgnoreCase(aux)) {
-                        cancionesFiltradas.add(cancion);
-                        cont++;
-                    }
-                    valor = valor - 1;
-                } while (valor != limite);
-            }
+            do {
+                String aux = String.valueOf(valor);
+                Cancion cancion = listaCanciones.get(i);
+                if (cancion.getAnio().equalsIgnoreCase(aux)) {
+                    cancionesFiltradas.add(cancion);
+                    cont++;
+                }
+                valor = valor - 1;
+            } while (valor != limite);
         }
 
+
         if (cont != 0) {
-            Collections.sort(cancionesFiltradas, new Comparator<Cancion>() {
-                @Override
-                public int compare(Cancion cancion1, Cancion cancion2) {
-                    return cancion1.getNombre().compareToIgnoreCase(cancion2.getNombre());
-                }
-            });
-
-            for (int i = 0; i < cancionesFiltradas.size() && i < imagenes.size(); i++) {
-                imagenes.get(i).setImage(cancionesFiltradas.get(i).getCaratula());
-                imagenes.get(i).setOpacity(100);
-                botones.get(i).setVisible(true);
-            }
-
-            for (int i = cont; i < imagenes.size(); i++) {
-                imagenes.get(i).setOpacity(0);
-                botones.get(i).setVisible(false);
-            }
-
-            titulo.setText("Canciones del año " + limite + " al " + anio);
+            organizarListaCanciones(cancionesFiltradas, cont);
+            titulo.setText("Canciones del año " + (limite + 1) + " al " + anio);
         } else {
             singleton.mostrarMensaje("No hay canciones", "No hay canciones",
                     "No hay canciones con este rango de años", Alert.AlertType.WARNING);
@@ -918,7 +938,6 @@ public class menuPrincipalControlador implements Initializable {
         Optional<ButtonType> action = alert.showAndWait();
 
         if (action.get() == ButtonType.OK) {
-            busquedaO = true;
             filtrarCanciones();
         }
 
@@ -935,7 +954,6 @@ public class menuPrincipalControlador implements Initializable {
         Optional<ButtonType> action = alert.showAndWait();
 
         if (action.get() == ButtonType.OK) {
-            busquedaY = true;
             filtrarCanciones();
         }
     }

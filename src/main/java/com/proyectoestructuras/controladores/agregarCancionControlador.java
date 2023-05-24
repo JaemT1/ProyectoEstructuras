@@ -3,6 +3,7 @@ package com.proyectoestructuras.controladores;
 import com.proyectoestructuras.model.Tienda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -13,13 +14,20 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class agregarCancionControlador {
+public class agregarCancionControlador implements Initializable {
     Tienda tienda;
     Singleton singleton = Singleton.getInstance();
 
-    boolean presionado = false;
+    boolean presionado = singleton.isPresionado();
+
+    ArrayList<String> datos = singleton.getDatos();
+    boolean registrado = singleton.isRegistrado();
+
     @FXML
     private Button btnAgregarCancion;
 
@@ -62,24 +70,34 @@ public class agregarCancionControlador {
     @FXML
     private TextField txtArtista;
 
+    /*
+    Evento que elimina una canción
+     */
     @FXML
     void eliminarCancion(ActionEvent event) {
 
         String cod = txtCodEliminar.getText();
+        /*
+        Verifica si el código de la canción ingresado existe
+         */
         boolean verificarCodigo = singleton.obtenerCodigo(cod);
+
+        /*
+        Verifica si ingresó un código en el campo de texto.
+         */
         if (datosValidosEliminar(cod)) {
             String msj = singleton.eliminarCancion(cod);
             if (verificarCodigo) {
-                if(msj.equalsIgnoreCase("Canción eliminada.")) {
+                if (msj.equalsIgnoreCase("Canción eliminada.")) {
                     singleton.mostrarMensaje("Canción eliminada", "Canción eliminada",
                             "La canción se ha eliminado correctamente", Alert.AlertType.INFORMATION);
                     limpiar();
-                }else{
+                } else {
                     singleton.mostrarMensaje("Canción no eliminada", "Canción no eliminada",
                             msj, Alert.AlertType.WARNING);
                     limpiar();
                 }
-            }else{
+            } else {
                 singleton.mostrarMensaje("Canción no encontrada", "Canción no encontrada",
                         "La canción no se ha encontrado", Alert.AlertType.WARNING);
                 limpiar();
@@ -87,6 +105,9 @@ public class agregarCancionControlador {
         }
     }
 
+    /*
+    Método que verifica que los campos de texto estén llenos.
+     */
     private boolean datosValidosEliminar(String cod) {
 
         String notificacion = "";
@@ -105,12 +126,18 @@ public class agregarCancionControlador {
         return false;
     }
 
+    /*
+    Evento que agrega una canción.
+     */
     @FXML
     void agregarCancion(ActionEvent event) {
         crearCancion();
     }
 
 
+    /*
+    Método que crea una canción.
+     */
     private void crearCancion() {
 
         String nombreCancion = txtNombreCancion.getText();
@@ -121,13 +148,23 @@ public class agregarCancionControlador {
         String genero = txtGenero.getText();
         String url = txtURL.getText();
         String codigo = txtCodigo.getText();
+        /* Se verifica si el código de la canción existe.*/
         boolean verificarCodigo = singleton.obtenerCodigo(codigo);
 
+        /*
+        Se verifica si ya se ha subido una imagen.
+         */
         if (presionado) {
 
+            /*
+            Se verifica si los datos ingresados son válidos.
+             */
             if (datosValidosCancion(codigo, nombreCancion, nombreAlbum, imageViewCancion.getImage(), anio, duracion, genero, url, nombreArtista)) {
                 String cancion = singleton.crearCancion(codigo, nombreCancion, nombreAlbum, imageViewCancion.getImage(), anio, duracion, genero, url, nombreArtista);
 
+                /*
+                Se verifica si la canción no existe, si no existe se crea.
+                 */
                 if (!verificarCodigo) {
 
                     if (cancion.equalsIgnoreCase("Canción registrada.")) {
@@ -135,15 +172,34 @@ public class agregarCancionControlador {
                                 "La canción se ha registrado correctamente", Alert.AlertType.INFORMATION);
                         limpiar();
                     } else if (cancion.equalsIgnoreCase("El artista no existe. Debe crearlo.")) {
+                        /*
+                        Se verifica si el artista existe, si no existe se abre la interfaz de crear al artista y se crea.
+                         */
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                         alert.setTitle("Información de creación de canción");
                         alert.setHeaderText(cancion);
                         alert.setContentText("¿Desea crear al artista en este momento?");
                         Optional<ButtonType> action = alert.showAndWait();
 
+                        /*
+                        Se guardan temporalmente los datos ingresados de la canción.
+                         */
+                        datos.add(codigo);
+                        datos.add(nombreCancion);
+                        datos.add(nombreAlbum);
+                        datos.add(anio);
+                        datos.add(duracion);
+                        datos.add(genero);
+                        datos.add(url);
+                        singleton.setDatos(datos);
+                        singleton.setArtista(nombreArtista);
+                        singleton.setImagen(imageViewCancion.getImage());
+                        singleton.setPresionado(true);
+
                         if (action.get() == ButtonType.OK) {
                             singleton.mostrarVentana("Agregar artista", "/views/agregarArtista.fxml");
                         }
+
                         limpiar();
 
                     } else {
@@ -161,10 +217,13 @@ public class agregarCancionControlador {
             singleton.mostrarMensaje("Canción inválida", "Canción no creada",
                     "Debe subir una imagen para agregar la canción", Alert.AlertType.WARNING);
         }
-        singleton.serializarBinario();
+        //singleton.serializarBinario();
 
     }
 
+    /*
+    Método que carga una imagen.
+     */
     private Image obtenerImagen() {
 
         FileChooser cargarImg = new FileChooser();
@@ -183,6 +242,9 @@ public class agregarCancionControlador {
     }
 
 
+    /*
+    Método que verifica que los campos de texto estén llenos.
+     */
     private boolean datosValidosCancion(String codigo, String nombreCancion, String nombreAlbum, Image imagen, String anio, String duracion, String genero, String url, String nombreArtista) {
         String notificacion = "";
 
@@ -234,12 +296,18 @@ public class agregarCancionControlador {
     }
 
 
+    /*
+    Evento que permite regresar al menú principal.
+     */
     @FXML
     void regresarMenu(ActionEvent event) {
         singleton.mostrarVentana("MenuPrincipal", "/views/menuPrincipal.fxml");
 
     }
 
+    /*
+    Evento que permite subir una imagen.
+     */
     @FXML
     void subirImagen(ActionEvent event) {
 
@@ -250,6 +318,9 @@ public class agregarCancionControlador {
 
     }
 
+    /*
+        Método que limpia los campos de texto.
+     */
     void limpiar() {
         txtAnio.setText("");
         txtArtista.setText("");
@@ -263,4 +334,25 @@ public class agregarCancionControlador {
         txtCodEliminar.setText("");
     }
 
+    /*
+     Método que al inicializar la ventana carga estos datos.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        /*
+        Se verifica si se presionó el botón de agregar artista, si se presionó se cargan los datos ingresados anteriormente.
+         */
+        if (registrado) {
+            txtCodigo.setText(datos.get(0));
+            txtNombreCancion.setText(datos.get(1));
+            txtNombreAlbum.setText(datos.get(2));
+            txtAnio.setText(datos.get(3));
+            txtDuracion.setText(datos.get(4));
+            txtGenero.setText(datos.get(5));
+            txtURL.setText(datos.get(6));
+            txtArtista.setText(singleton.getArtista());
+            imageViewCancion.setImage(singleton.getImagen());
+        }
+    }
 }

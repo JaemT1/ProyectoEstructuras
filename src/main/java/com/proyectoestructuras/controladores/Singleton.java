@@ -2,12 +2,12 @@ package com.proyectoestructuras.controladores;
 
 import com.proyectoestructuras.main.Aplicacion;
 import com.proyectoestructuras.model.ArbolBinarioArtistas;
-import com.proyectoestructuras.model.Artista;
 import com.proyectoestructuras.model.Cancion;
 import com.proyectoestructuras.model.Tienda;
 import com.proyectoestructuras.persistencia.persistencia;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+
 
 import java.util.ArrayList;
 
@@ -17,6 +17,54 @@ public class Singleton {
     private Aplicacion aplicacion;
     private String linkYoutube;
 
+    ArrayList<String> datos = new ArrayList<>();
+
+    String artista;
+
+    boolean registrado;
+    boolean presionado;
+
+    Image imagen;
+
+    public boolean isPresionado() {
+        return presionado;
+    }
+
+    public void setPresionado(boolean presionado) {
+        this.presionado = presionado;
+    }
+
+    public Image getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Image imagen) {
+        this.imagen = imagen;
+    }
+
+    public boolean isRegistrado() {
+        return registrado;
+    }
+
+    public void setRegistrado(boolean registrado) {
+        this.registrado = registrado;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public ArrayList<String> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(ArrayList<String> datos) {
+        this.datos = datos;
+    }
 
     public void setAplicacion(Aplicacion aplicacion) {
         this.aplicacion = aplicacion;

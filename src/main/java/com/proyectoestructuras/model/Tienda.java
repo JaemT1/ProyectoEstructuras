@@ -6,24 +6,22 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Tienda implements Serializable {
-    //Atributos
-
-
+    /* Atributos*/
     ArrayList<Cancion> listaCanciones = new ArrayList<Cancion>();
     ArbolBinarioArtistas arbolArtistas = new ArbolBinarioArtistas();
 
 
     //Constructor
     public Tienda() {
-        crearCanciones();
-        //crearArtistas();
+        crear();
     }
 
-    public void crearCanciones() {
+    /*Método que crea las canciones y los artistas - Datos quemados*/
+    public void crear() {
         ArrayList aux = new ArrayList();
 
         //ROCK
-        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/comeAsYouAre.jpg"))), "1991", "3:44", "comeAsYouAre", "https://www.youtube.com/watch?v=vabnZ9-ex7o", "Nirvana", 0);
+        Cancion ca1 = new Cancion("1", "Come as you are", "Nevermind", new Image(String.valueOf(getClass().getResource("/imagenes/comeAsYouAre.jpg"))), "1991", "3:44", "Rock", "https://www.youtube.com/watch?v=vabnZ9-ex7o", "Nirvana", 0);
         Cancion ca2 = new Cancion("2", "The Unforgiven", "Metallica", new Image(String.valueOf(getClass().getResource("/imagenes/theUnforgiven.jpg"))), "1991", "6:28", "Rock", "https://www.youtube.com/watch?v=Ckom3gf57Yw", "Metallica", 1);
         Cancion ca3 = new Cancion("3", "Your Love", "Play Deep", new Image(String.valueOf(getClass().getResource("/imagenes/yourLove.jpg"))), "1985", "4:12", "Rock", "https://www.youtube.com/watch?v=4N1iwQxiHrs", "The Outfield", 2);
         Cancion ca4 = new Cancion("4", "I Hate Myself for Loving You", "Up Your Alley", new Image(String.valueOf(getClass().getResource("/imagenes/iHateMyself.jpg"))), "1988", "4:17", "Rock", "https://www.youtube.com/watch?v=bpNw7jYkbVc", "Joan Jett & The Blackhearts", 3);
@@ -108,6 +106,11 @@ public class Tienda implements Serializable {
 
     }
 
+
+    /*
+     * Metodo que crea los artistas y los inserta en el arbol.
+     * Le agrega a cada artista su lista de canciones.
+     */
     public void crearArtistas(Artista artista) {
         ArrayList lista = new ArrayList();
         for (int i = 0; i < listaCanciones.size(); i++) {
@@ -145,6 +148,10 @@ public class Tienda implements Serializable {
         this.listaCanciones = listaCanciones;
     }
 
+    /*
+     * Metodo que recibe un codigo y busca la cancion en la lista de canciones.
+     * Si la encuentra, la elimina de la lista de canciones y de la lista de canciones del artista.
+     */
     public String eliminarCancion(String codigo) {
 
         String mensaje = "";
@@ -171,6 +178,11 @@ public class Tienda implements Serializable {
         return mensaje;
     }
 
+    /*
+     * Metodo que recibe los parametros para crear una canción.
+     * Se busca en la lista de canciones mediante el código,
+     * si no la encuentra, la crea y la agrega a la lista de canciones y a la lista de canciones del artista.
+     */
     public String crearCancion(String codigo, String nombreCancion, String nombreAlbum, Image imagen, String anio, String duracion, String genero, String url, String nombreArtista) {
 
         String resultado = "";
@@ -182,7 +194,7 @@ public class Tienda implements Serializable {
 
         if (cancionEncontrada == null) {
             for (int i = 0; i < listaCanciones.size(); i++) {
-                if (!listaCanciones.get(i).getNombreArtista().equalsIgnoreCase(nombreArtista) && arbolArtistas.buscar(nombreArtista) == null){
+                if (!listaCanciones.get(i).getNombreArtista().equalsIgnoreCase(nombreArtista) && arbolArtistas.buscar(nombreArtista) == null) {
                     encontrado = false;
                 } else {
                     encontrado = true;
@@ -193,7 +205,7 @@ public class Tienda implements Serializable {
             if (encontrado) {
                 cancionEncontrada = new Cancion(codigo, nombreCancion, nombreAlbum, imagen, anio, duracion, genero, url, nombreArtista, indice);
                 listaCanciones.add(cancionEncontrada);
-                cancionEncontrada.setIndice(listaCanciones.size()-1);
+                cancionEncontrada.setIndice(listaCanciones.size() - 1);
                 arbolArtistas.buscar(nombreArtista).getListaCanciones().add(cancionEncontrada);
                 resultado = "Canción registrada.";
             } else {
@@ -207,6 +219,8 @@ public class Tienda implements Serializable {
 
     }
 
+    /*Método que busca una canción en la lista de cancionoes mediante el código*/
+
     private Cancion buscarCancion(String codigo) {
         for (Cancion cancion : listaCanciones) {
 
@@ -218,6 +232,9 @@ public class Tienda implements Serializable {
         return null;
     }
 
+    /*
+    Método que verifica si una canción existe o no mediante el codigo
+     */
     public boolean obtenerCodigo(String cod) {
 
         for (int i = 0; i < listaCanciones.size(); i++) {
@@ -235,6 +252,7 @@ public class Tienda implements Serializable {
         return listaCanciones;
     }
 
+    /* Método que verifica si el artista existe, y si el código de dicho artista es igual al que se pasa por parámetro.*/
     public boolean obtenerCodigoArtista(String nombre, String cod) {
 
         if (arbolArtistas.buscar(nombre) == null) {
@@ -247,11 +265,15 @@ public class Tienda implements Serializable {
         return false;
     }
 
-    public String obtenerCodArtista(String nombre){
+    /* Método que obtiene el código de un artista.*/
+    public String obtenerCodArtista(String nombre) {
 
         return arbolArtistas.buscar(nombre).getCodigo();
     }
 
+    /*Método que crea un artista.
+    Recibe los parámetros para crear un artista, y verifica si el artista ya existe o no. Si no existe, lo agrega al arbol de artistas.
+     */
     public String crearArtista(String codigo, String nombreArtista, String nacionalidad, boolean grupo) {
 
         ArrayList<Cancion> aux = new ArrayList();
@@ -270,6 +292,9 @@ public class Tienda implements Serializable {
         return resultado;
     }
 
+    /* Método que busca a un artista en el arbol de artistas mediante el nombre y el código.
+     * Si lo encuentra devuelve al artista, si no null.*/
+
     private Artista buscarArtista(String nombre, String codigo) {
 
         if (arbolArtistas.buscar(nombre) == null) {
@@ -282,6 +307,9 @@ public class Tienda implements Serializable {
         return null;
     }
 
+    /* Método que busca a un artista en el arbol de artistas mediante el nombre.
+     * Si lo encuentra devuelve al artista, si no null.
+     */
     private Artista buscarArtistaNombre(String nombre) {
 
         if (arbolArtistas.buscar(nombre) == null) {
@@ -290,6 +318,8 @@ public class Tienda implements Serializable {
             return arbolArtistas.buscar(nombre);
         }
     }
+
+    /* Método que verifica si existe un artista con el nombre que se pasa por parámetro.*/
 
     public boolean obtenerArtista(String nombre) {
 
@@ -303,13 +333,18 @@ public class Tienda implements Serializable {
         return false;
     }
 
+    /*
+    Método que elimina un artista de la aplicación.
+    Recibe el nombre del artista que se desea eliminar.
+    Verifica si el artista existe o no, y si existe, lo elimina del arbol de artistas y de la lista de canciones.
+     */
     public String eliminarArtista(String nombre) {
         String mensaje = "";
 
-        if(arbolArtistas.buscar(nombre) != null) {
+        if (arbolArtistas.buscar(nombre) != null) {
 
-            for (int i = 0; i < listaCanciones.size() ; i++) {
-                if(listaCanciones.get(i).getNombreArtista().equalsIgnoreCase(nombre)){
+            for (int i = 0; i < listaCanciones.size(); i++) {
+                if (listaCanciones.get(i).getNombreArtista().equalsIgnoreCase(nombre)) {
                     listaCanciones.remove(i);
                     i--;
                 }
@@ -317,17 +352,21 @@ public class Tienda implements Serializable {
             arbolArtistas.eliminar(nombre);
             mensaje = "Artista eliminado.";
 
-        }else{
+        } else {
             mensaje = "El artista no se encuentra registrado en la aplicación.";
         }
 
         return mensaje;
     }
 
+    /*
+    Método que actualiza los datos de un artista.
+    Recibe el nombre del artista, y los datos a actualizar: el código, la nueva nacionalidad y si es grupo o no.
+     */
     public String actualizarArtista(String codigo, String nombreAnterior, String nacionalidadNueva, boolean grupoNuevo) {
 
         Artista artista = buscarArtistaNombre(nombreAnterior);
-        String mensaje="";
+        String mensaje = "";
 
         if (artista != null) {
             artista.setCodigo(codigo);
@@ -341,7 +380,6 @@ public class Tienda implements Serializable {
 
         return mensaje;
     }
-
 
 
 }
