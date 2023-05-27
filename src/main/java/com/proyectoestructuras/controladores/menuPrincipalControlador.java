@@ -3,6 +3,7 @@ package com.proyectoestructuras.controladores;
 import com.proyectoestructuras.main.Aplicacion;
 import com.proyectoestructuras.model.ArbolBinarioArtistas;
 import com.proyectoestructuras.model.Cancion;
+import com.proyectoestructuras.model.RepositorioCancionesFavoritas;
 import com.proyectoestructuras.model.Tienda;
 
 import javafx.event.ActionEvent;
@@ -35,9 +36,13 @@ public class menuPrincipalControlador implements Initializable {
 
     ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
 
+    ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
     static boolean bandera = false;
 
     static String linkYoutube = "";
+
+    Cancion cancion = null;
+
 
     boolean auxO = false;
     boolean auxY = false;
@@ -238,6 +243,12 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void agregarAFavoritos(ActionEvent event) {
 
+        if (!RepositorioCancionesFavoritas.getListaCancionesFavoritas().contains(cancion)) {
+            RepositorioCancionesFavoritas.agregarCancionFavorita(cancion);
+            singleton.mostrarMensaje("Información", "Agregar a favoritos", "La canción ha sido agregada a favoritos", Alert.AlertType.INFORMATION);
+        } else {
+            singleton.mostrarMensaje("Información", "Agregar a favoritos", "La canción ya está en favoritos", Alert.AlertType.WARNING);
+        }
     }
 
     @FXML
@@ -348,6 +359,7 @@ public class menuPrincipalControlador implements Initializable {
 
     @FXML
     void cancionesFavoritas(ActionEvent event) {
+        singleton.mostrarVentana("Canciones Favoritas", "/views/misFavoritos.fxml");
 
     }
 
@@ -363,6 +375,7 @@ public class menuPrincipalControlador implements Initializable {
                 if (imagenes.get(id).getImage().equals(listaCanciones.get(i).getCaratula())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
                     linkYoutube = listaCanciones.get(i).getUrl();
+                    cancion = listaCanciones.get(i);
                     break;
                 }
             }
@@ -378,6 +391,7 @@ public class menuPrincipalControlador implements Initializable {
                         if (aux.equals(canciones.get(j).getCaratula())) {
                             mostrarInformacion(canciones.get(j).getIndice());
                             linkYoutube = listaCanciones.get(j).getUrl();
+                            cancion = listaCanciones.get(j);
                         }
                     }
                 }
@@ -925,37 +939,6 @@ public class menuPrincipalControlador implements Initializable {
         }
 
         return false;
-    }
-
-    @FXML
-    void buscarO(ActionEvent event) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Información de búsqueda de canción");
-        alert.setHeaderText("Se le mostrarán las canciones que cumplen con al menos uno" +
-                " de los dos filtros seleccionados.");
-        alert.setContentText("¿Desea continuar con la búsqueda?");
-        Optional<ButtonType> action = alert.showAndWait();
-
-        if (action.get() == ButtonType.OK) {
-            filtrarCanciones();
-        }
-
-    }
-
-    @FXML
-    void buscarY(ActionEvent event) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Información de búsqueda de canción");
-        alert.setHeaderText("Se le mostrarán las canciones que cumplen con " +
-                "los dos filtros seleccionados.");
-        alert.setContentText("¿Desea continuar con la búsqueda?");
-        Optional<ButtonType> action = alert.showAndWait();
-
-        if (action.get() == ButtonType.OK) {
-            filtrarCanciones();
-        }
     }
 
 

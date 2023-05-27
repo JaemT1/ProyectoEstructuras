@@ -26,6 +26,16 @@ public class Singleton {
 
     Image imagen;
 
+    ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
+
+    public ArrayList<Cancion> getListaCancionesFavoritas() {
+        return listaCancionesFavoritas;
+    }
+
+    public void setListaCancionesFavoritas(ArrayList<Cancion> listaCancionesFavoritas) {
+        this.listaCancionesFavoritas = listaCancionesFavoritas;
+    }
+
     public boolean isPresionado() {
         return presionado;
     }

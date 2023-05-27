@@ -69,6 +69,24 @@ public class Tienda implements Serializable {
         Artista ar5 = new Artista("5", "Daddy Yankee", "Puerto Rico", false, aux);
         Artista ar6 = new Artista("6", "Nirvana", "Estados Unidos", true, aux);
         Artista ar7 = new Artista("7", "Metallica", "Estados Unidos", true, aux);
+        Artista ar8 = new Artista("8", "The Outfield", "Estados Unidos", true, aux);
+        Artista ar9 = new Artista("9", "Joan Jett & The Blackhearts", "Estados Unidos", true, aux);
+        Artista ar10 = new Artista("10", "Oasis", "Estados Unidos", true, aux);
+        Artista ar11 = new Artista("11", "Madonna", "Estados Unidos", true, aux);
+        Artista ar12 = new Artista("12", "Ed Sheeran", "Estados Unidos", true, aux);
+        Artista ar13 = new Artista("13", "LadyGaga", "Estados Unidos", true, aux);
+        Artista ar14 = new Artista("14", "Luis Fonsi", "Estados Unidos", true, aux);
+        Artista ar15 = new Artista("15", "Here's the Sex Pistols - Sex Pistols", "Estados Unidos", true, aux);
+        Artista ar16 = new Artista("16", "The Clash", "Estados Unidos", true, aux);
+        Artista ar17 = new Artista("17", "Green Day", "Estados Unidos", true, aux);
+        Artista ar18 = new Artista("18", "The Undertones", "Estados Unidos", true, aux);
+        Artista ar19 = new Artista("19", "The Human League", "Estados Unidos", true, aux);
+        Artista ar20 = new Artista("20", "Scandroid", "Estados Unidos", true, aux);
+        Artista ar21 = new Artista("21", "Kraftwerk", "Estados Unidos", true, aux);
+        Artista ar22 = new Artista("22", "Trevor Something", "Estados Unidos", true, aux);
+        Artista ar23 = new Artista("23", "Perturbator", "Estados Unidos", true, aux);
+        Artista ar24 = new Artista("24", "Ramones", "Estados Unidos", true, aux);
+
 
         aniadirCanciones(ca1);
         aniadirCanciones(ca2);
@@ -103,6 +121,23 @@ public class Tienda implements Serializable {
         crearArtistas(ar5);
         crearArtistas(ar6);
         crearArtistas(ar7);
+        crearArtistas(ar8);
+        crearArtistas(ar9);
+        crearArtistas(ar10);
+        crearArtistas(ar11);
+        crearArtistas(ar12);
+        crearArtistas(ar13);
+        crearArtistas(ar14);
+        crearArtistas(ar15);
+        crearArtistas(ar16);
+        crearArtistas(ar17);
+        crearArtistas(ar18);
+        crearArtistas(ar19);
+        crearArtistas(ar20);
+        crearArtistas(ar21);
+        crearArtistas(ar22);
+        crearArtistas(ar23);
+        crearArtistas(ar24);
 
     }
 
@@ -160,7 +195,6 @@ public class Tienda implements Serializable {
             if (cancion.getCodigo().equalsIgnoreCase(codigo)) {
                 listaCanciones.remove(cancion);
                 for (int i = 0; i < arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().size(); i++) {
-
                     if (arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().get(i).getCodigo().equalsIgnoreCase(cancion.getCodigo())) {
                         arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().remove(i);
                     }

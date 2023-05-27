@@ -94,7 +94,7 @@
             </Button>
             <Separator layoutY="256.0" prefHeight="3.0" prefWidth="224.0" />
          </children></Pane>
-      <Pane layoutX="1136.0" layoutY="51.0" prefHeight="662.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
+      <Pane layoutX="1136.0" layoutY="51.0" prefHeight="688.0" prefWidth="224.0" style="-fx-background-color: #D4E6F1;">
          <children>
             <Label fx:id="info" alignment="CENTER" layoutX="7.0" layoutY="24.0" opacity="0.0" prefHeight="66.0" prefWidth="213.0" text="Información de la canción" textAlignment="CENTER">
                <font>
@@ -165,7 +165,7 @@
                         <ImageView fx:id="imageView41" accessibleText="3" fitHeight="133.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion51" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="4" textFill="TRANSPARENT" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion51" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="4" textFill="TRANSPARENT" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -173,7 +173,7 @@
                         <ImageView fx:id="imageView51" accessibleText="4" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion81" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="7" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion81" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="7" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -181,7 +181,7 @@
                         <ImageView fx:id="imageView81" accessibleText="7" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion71" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="6" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion71" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="6" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -189,7 +189,7 @@
                         <ImageView fx:id="imageView71" accessibleText="6" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion61" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="5" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="btnCancion61" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="5" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -197,7 +197,7 @@
                         <ImageView fx:id="imageView61" accessibleText="5" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion91" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="8" textFill="TRANSPARENT" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion91" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="8" textFill="TRANSPARENT" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -205,7 +205,7 @@
                         <ImageView fx:id="imageView91" accessibleText="8" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion101" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="9" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion101" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="9" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -213,7 +213,7 @@
                         <ImageView fx:id="imageView101" accessibleText="9" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion111" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="10" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion111" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="10" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -221,7 +221,7 @@
                         <ImageView fx:id="imageView111" accessibleText="10" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion121" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="11" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <Button fx:id="btnCancion121" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="11" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -229,7 +229,7 @@
                         <ImageView fx:id="imageView121" accessibleText="11" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion131" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="12" textFill="TRANSPARENT" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion131" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="12" textFill="TRANSPARENT" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -237,7 +237,7 @@
                         <ImageView fx:id="imageView131" accessibleText="12" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion11" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="0" textAlignment="CENTER" textFill="TRANSPARENT">
+                  <Button fx:id="btnCancion11" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="0" textAlignment="CENTER" textFill="TRANSPARENT">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -245,7 +245,7 @@
                         <ImageView fx:id="imageView11" accessibleText="0" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion141" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="13" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion141" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="141.0" prefWidth="136.0" style="-fx-background-color: white;" text="13" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -253,7 +253,7 @@
                         <ImageView fx:id="imageView141" accessibleText="13" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion151" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="139.0" prefWidth="142.0" style="-fx-background-color: white;" text="14" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion151" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="139.0" prefWidth="142.0" style="-fx-background-color: white;" text="14" textFill="TRANSPARENT" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -261,7 +261,7 @@
                         <ImageView fx:id="imageView151" accessibleText="14" fitHeight="133.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnCancion161" alignment="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="138.0" prefWidth="138.0" style="-fx-background-color: white;" text="15" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <Button fx:id="btnCancion161" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#mostrarInformacionCancion" prefHeight="138.0" prefWidth="138.0" style="-fx-background-color: white;" text="15" textFill="TRANSPARENT" GridPane.columnIndex="3" GridPane.rowIndex="3">
                      <padding>
                         <Insets bottom="1.0" right="1.0" top="1.0" />
                      </padding>
