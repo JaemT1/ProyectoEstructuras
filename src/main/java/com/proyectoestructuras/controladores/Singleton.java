@@ -24,7 +24,18 @@ public class Singleton {
     boolean registrado;
     boolean presionado;
 
+    boolean artistaRegistrado = true;
+
     Image imagen;
+
+
+    public boolean isArtistaRegistrado() {
+        return artistaRegistrado;
+    }
+
+    public void setArtistaRegistrado(boolean artistaRegistrado) {
+        this.artistaRegistrado = artistaRegistrado;
+    }
 
     ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
 
@@ -151,9 +162,9 @@ public class Singleton {
         aplicacion = new Aplicacion();
     }
 
-    public void mostrarVentana(String titulo, String ruta) {
+    public void mostrarVentana(String titulo, String ruta, double ancho, double alto) {
 
-        aplicacion.mostrarVentana(titulo, ruta);
+        aplicacion.mostrarVentana(titulo, ruta, ancho, alto);
     }
 
     public ArbolBinarioArtistas retornarArbol() {

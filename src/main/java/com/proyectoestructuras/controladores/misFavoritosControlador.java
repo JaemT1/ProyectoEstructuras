@@ -88,9 +88,6 @@ public class misFavoritosControlador implements Initializable {
     private Button btnCancion91;
 
     @FXML
-    private Button btnDeshacer;
-
-    @FXML
     private Button btnLimpiar;
 
     @FXML
@@ -98,9 +95,6 @@ public class misFavoritosControlador implements Initializable {
 
     @FXML
     private Button btnRegresar;
-
-    @FXML
-    private Button btnRehacer;
 
     @FXML
     private Button btnReproducir;
@@ -186,10 +180,6 @@ public class misFavoritosControlador implements Initializable {
         imagenesIniciales();
     }
 
-    @FXML
-    void deshacer(ActionEvent event) {
-
-    }
 
     @FXML
     void limpiar(ActionEvent event) {
@@ -236,12 +226,7 @@ public class misFavoritosControlador implements Initializable {
     @FXML
     void regresar(ActionEvent event) {
 
-        singleton.mostrarVentana("Menu Principal", "/views/menuPrincipal.fxml");
-
-    }
-
-    @FXML
-    void rehacer(ActionEvent event) {
+        singleton.mostrarVentana("Menu Principal", "/views/menuPrincipal.fxml",80,30);
 
     }
 

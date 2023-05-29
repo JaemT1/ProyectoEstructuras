@@ -254,14 +254,14 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void agregarArtista(ActionEvent event) {
 
-        singleton.mostrarVentana("Agregar Artista", "/views/agregarArtista.fxml");
+        singleton.mostrarVentana("Agregar Artista", "/views/agregarArtista.fxml",400,100);
 
     }
 
     @FXML
     void agregarCancion(ActionEvent event) {
 
-        singleton.mostrarVentana("Agregar Canción", "/views/agregarCancion.fxml");
+        singleton.mostrarVentana("Agregar Canción", "/views/agregarCancion.fxml",400,100);
 
     }
 
@@ -359,13 +359,12 @@ public class menuPrincipalControlador implements Initializable {
 
     @FXML
     void cancionesFavoritas(ActionEvent event) {
-        singleton.mostrarVentana("Canciones Favoritas", "/views/misFavoritos.fxml");
+        singleton.mostrarVentana("Canciones Favoritas", "/views/misFavoritos.fxml",200,40);
 
     }
 
     @FXML
     void mostrarInformacionCancion(ActionEvent event) {
-
 
         Button prueba = (Button) event.getSource();
         int id = Integer.parseInt(prueba.getText());
@@ -379,7 +378,6 @@ public class menuPrincipalControlador implements Initializable {
                     break;
                 }
             }
-
 
         } else {
 

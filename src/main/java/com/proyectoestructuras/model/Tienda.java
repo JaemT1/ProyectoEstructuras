@@ -1,5 +1,6 @@
 package com.proyectoestructuras.model;
 
+import com.proyectoestructuras.controladores.Singleton;
 import javafx.scene.image.Image;
 
 import java.io.Serializable;
@@ -7,8 +8,9 @@ import java.util.*;
 
 public class Tienda implements Serializable {
     /* Atributos*/
-    ArrayList<Cancion> listaCanciones = new ArrayList<Cancion>();
+    ArrayList<Cancion> listaCanciones = new ArrayList<>();
     ArbolBinarioArtistas arbolArtistas = new ArbolBinarioArtistas();
+
 
 
     //Constructor

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="241.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.proyectoestructuras.controladores.inicioControlador">
+   <children>
+      <ImageView fx:id="imageViewFondo" fitHeight="251.0" fitWidth="382.0" layoutX="-5.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fondo.jpg" />
+         </image>
+      </ImageView>
+      <Label contentDisplay="RIGHT" layoutX="243.0" layoutY="201.0" text="Cargando..." textFill="WHITE">
+         <graphic>
+            <ImageView fx:id="imagen" fitHeight="25.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/cargando.gif" />
+               </image></ImageView>
+         </graphic>
+      </Label>
+   </children>
+</AnchorPane>

@@ -248,31 +248,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Separator layoutY="55.0" prefHeight="3.0" prefWidth="110.0" />
-            <Label layoutX="48.0" layoutY="25.0" prefHeight="17.0" prefWidth="40.0" text="Ajustes" />
-            <ImageView fitHeight="27.0" fitWidth="28.0" layoutX="16.0" layoutY="20.0">
-               <image>
-                  <Image url="@../imagenes/configuracion.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnDeshacer" layoutX="10.0" layoutY="277.0" mnemonicParsing="false" onAction="#deshacer" style="-fx-background-color: #D4E6F1;" text="Deshacer">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0">
-                     <image>
-                        <Image url="@../imagenes/deshacer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnRehacer" layoutX="13.0" layoutY="329.0" mnemonicParsing="false" onAction="#rehacer" style="-fx-background-color: #D4E6F1;" text="Rehacer">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0">
-                     <image>
-                        <Image url="@../imagenes/rehacer.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
          </children>
       </Pane>
    </children>

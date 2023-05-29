@@ -1,5 +1,7 @@
 package com.proyectoestructuras.controladores;
 
+import com.proyectoestructuras.model.Cancion;
+import com.proyectoestructuras.model.RepositorioCancionesFavoritas;
 import com.proyectoestructuras.model.Tienda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +29,8 @@ public class agregarCancionControlador implements Initializable {
 
     ArrayList<String> datos = singleton.getDatos();
     boolean registrado = singleton.isRegistrado();
+
+    RepositorioCancionesFavoritas repositorioCancionesFavoritas;
 
     @FXML
     private Button btnAgregarCancion;
@@ -89,6 +93,7 @@ public class agregarCancionControlador implements Initializable {
             String msj = singleton.eliminarCancion(cod);
             if (verificarCodigo) {
                 if (msj.equalsIgnoreCase("Canción eliminada.")) {
+                    repositorioCancionesFavoritas.eliminarCancionFavorita(cod);
                     singleton.mostrarMensaje("Canción eliminada", "Canción eliminada",
                             "La canción se ha eliminado correctamente", Alert.AlertType.INFORMATION);
                     limpiar();
@@ -197,7 +202,7 @@ public class agregarCancionControlador implements Initializable {
                         singleton.setPresionado(true);
 
                         if (action.get() == ButtonType.OK) {
-                            singleton.mostrarVentana("Agregar artista", "/views/agregarArtista.fxml");
+                            singleton.mostrarVentana("Agregar artista", "/views/agregarArtista.fxml",400,100);
                         }
 
                         limpiar();
@@ -301,7 +306,7 @@ public class agregarCancionControlador implements Initializable {
      */
     @FXML
     void regresarMenu(ActionEvent event) {
-        singleton.mostrarVentana("MenuPrincipal", "/views/menuPrincipal.fxml");
+        singleton.mostrarVentana("MenuPrincipal", "/views/menuPrincipal.fxml",80,30);
 
     }
 
@@ -340,10 +345,12 @@ public class agregarCancionControlador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        limpiar();
         /*
         Se verifica si se presionó el botón de agregar artista, si se presionó se cargan los datos ingresados anteriormente.
          */
         if (registrado) {
+            singleton.setRegistrado(false);
             txtCodigo.setText(datos.get(0));
             txtNombreCancion.setText(datos.get(1));
             txtNombreAlbum.setText(datos.get(2));

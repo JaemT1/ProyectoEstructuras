@@ -15,6 +15,8 @@ public class agregarArtistaControlador implements Initializable {
     Tienda tienda;
     Singleton singleton = Singleton.getInstance();
 
+    boolean artistaRegistrado = singleton.isArtistaRegistrado();
+
     @FXML
     private TextField txtNombreEliminar;
 
@@ -130,7 +132,8 @@ public class agregarArtistaControlador implements Initializable {
                     singleton.mostrarMensaje("Artista agregado", "Artista agregado", "El artista " + nombreArtista + " ha sido agregado con éxito.",
                             Alert.AlertType.INFORMATION);
                     singleton.setRegistrado(true);
-                    singleton.mostrarVentana("Agregar canción","/views/agregarCancion.fxml");
+                    singleton.setArtistaRegistrado(false);
+                    singleton.mostrarVentana("Agregar canción", "/views/agregarCancion.fxml",80,30);
                     limpiar();
                 } else {
                     singleton.mostrarMensaje("Artista no agregado", "Artista no agregado", artista,
@@ -254,14 +257,19 @@ public class agregarArtistaControlador implements Initializable {
     @FXML
     void regresarMenu(ActionEvent event) {
 
-        singleton.mostrarVentana("Menu Principal", "/views/menuPrincipal.fxml");
+        singleton.mostrarVentana("Menu Principal", "/views/menuPrincipal.fxml",80,30);
 
     }
 
     /* Método que inicializa datos una vez se abre la ventana.*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String nombre = singleton.getArtista();
-        txtNombreArtista.setText(nombre);
+
+        if(artistaRegistrado) {
+            String nombre = singleton.getArtista();
+            txtNombreArtista.setText(nombre);
+        }else{
+            limpiar();
+        }
     }
 }
