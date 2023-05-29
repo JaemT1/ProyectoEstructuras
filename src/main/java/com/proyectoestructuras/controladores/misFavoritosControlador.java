@@ -177,7 +177,7 @@ public class misFavoritosControlador implements Initializable {
 
     @FXML
     void anteriorPagina(ActionEvent event) {
-
+        bandera = false;
         imagenesIniciales();
     }
 
@@ -309,11 +309,11 @@ public class misFavoritosControlador implements Initializable {
                 int aux2 = Integer.parseInt(imagenes.get(i).getAccessibleText());
                 if (id == aux2) {
                     for (Cancion cancionFavorita : cancionesFavoritas) {
-                        if (aux.equals(cancionFavorita.getCaratula())) {
-                            // Actualizamos el índice de la canción
-                            int nuevoIndice = i + 1;
-                            cancionFavorita.setIndice(nuevoIndice);
-                            mostrarInformacion(nuevoIndice);
+
+                        Image imgAux = new Image(cancionFavorita.getCaratula().getPath());
+                        System.out.println(imgAux.getUrl());
+                        if (aux.getUrl().equalsIgnoreCase(imgAux.getUrl())) {
+                            mostrarInformacion(cancionFavorita.getIndice());
                             linkYoutube = cancionFavorita.getUrl();
                             cancion = cancionFavorita;
                             break;

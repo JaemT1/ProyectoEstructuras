@@ -316,6 +316,7 @@ public class menuPrincipalControlador implements Initializable {
             canciones = arbol.buscar(txtBuscarArtista.getText()).getListaCanciones();
             titulo.setText("Canciones de " + txtBuscarArtista.getText());
             actualizarImagenes(canciones);
+            bandera = false;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -324,6 +325,7 @@ public class menuPrincipalControlador implements Initializable {
             alert.showAndWait();
             limpiar();
             limpiarInformacion();
+            bandera = false;
         }
     }
 
@@ -393,8 +395,8 @@ public class menuPrincipalControlador implements Initializable {
                         Image img = new Image(canciones.get(j).getCaratula().getPath());
                         if (aux.getUrl().equals(img.getUrl())) {
                             mostrarInformacion(canciones.get(j).getIndice());
-                            linkYoutube = listaCanciones.get(j).getUrl();
-                            cancion = listaCanciones.get(j);
+                            linkYoutube = canciones.get(j).getUrl();
+                            cancion = canciones.get(j);
                         }
                     }
                 }
@@ -488,7 +490,6 @@ public class menuPrincipalControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         singleton.cargarBinario();
         listaCanciones = singleton.getTienda().getListaCanciones();
         treeViewFiltros.setRoot(agregarElementos());

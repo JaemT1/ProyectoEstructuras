@@ -105,8 +105,8 @@ public class Singleton {
         return tienda.crearCancion(codigo, nombreCancion, nombreAlbum, imagen, anio, duracion, genero, url, nombreArtista);
     }
 
-    public String eliminarCancion(String codigo) {
-        return tienda.eliminarCancion(codigo);
+    public String eliminarCancion(String nom) {
+        return tienda.eliminarCancion(nom);
     }
 
     public void mostrarMensaje(String titulo, String header, String mensaje, Alert.AlertType alerta) {
@@ -122,12 +122,16 @@ public class Singleton {
         return tienda.obtenerCodigo(cod);
     }
 
+    public boolean obtenerNom(String nom) {
+        return tienda.obtenerNom(nom);
+    }
+
     public ArrayList<Cancion> obtenerListaCanciones() {
         return tienda.obtenerListaCanciones();
     }
 
-    public boolean obtenerCodigoArtista(String nombre, String cod) {
-        return tienda.obtenerCodigoArtista(nombre, cod);
+    public boolean obtenerNomArtista(String nombre) {
+        return tienda.obtenerNomArtista(nombre);
     }
 
     public String crearArtista(String codigo, String nombreArtista, String nacionalidad, boolean grupo) {

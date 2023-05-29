@@ -20,10 +20,10 @@ public class RepositorioCancionesFavoritas implements Serializable {
         listaCancionesFavoritas.add(cancion);
     }
 
-    public  void eliminarCancionFavorita(String cod) {
+    public  void eliminarCancionFavorita(String nom) {
 
         for (int i = 0; i <listaCancionesFavoritas.size() ; i++) {
-            if(listaCancionesFavoritas.get(i).getCodigo().equalsIgnoreCase(cod)){
+            if(listaCancionesFavoritas.get(i).getNombre().equalsIgnoreCase(nom)){
                 listaCancionesFavoritas.remove(i);
             }
         }

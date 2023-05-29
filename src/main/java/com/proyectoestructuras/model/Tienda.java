@@ -198,15 +198,15 @@ public class Tienda implements Serializable {
      * Metodo que recibe un codigo y busca la cancion en la lista de canciones.
      * Si la encuentra, la elimina de la lista de canciones y de la lista de canciones del artista.
      */
-    public String eliminarCancion(String codigo) {
+    public String eliminarCancion(String nom) {
 
         String mensaje = "";
 
         for (Cancion cancion : listaCanciones) {
-            if (cancion.getCodigo().equalsIgnoreCase(codigo)) {
+            if (cancion.getNombre().equalsIgnoreCase(nom)) {
                 listaCanciones.remove(cancion);
                 for (int i = 0; i < arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().size(); i++) {
-                    if (arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().get(i).getCodigo().equalsIgnoreCase(cancion.getCodigo())) {
+                    if (arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().get(i).getNombre().equalsIgnoreCase(cancion.getNombre())) {
                         arbolArtistas.buscar(cancion.getNombreArtista()).getListaCanciones().remove(i);
                     }
                 }
@@ -293,17 +293,30 @@ public class Tienda implements Serializable {
         return false;
     }
 
+    public boolean obtenerNom(String nom) {
+
+        for (int i = 0; i < listaCanciones.size(); i++) {
+
+            String aux = listaCanciones.get(i).getNombre();
+
+            if (aux.equalsIgnoreCase(nom)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Cancion> obtenerListaCanciones() {
         return listaCanciones;
     }
 
     /* Método que verifica si el artista existe, y si el código de dicho artista es igual al que se pasa por parámetro.*/
-    public boolean obtenerCodigoArtista(String nombre, String cod) {
+    public boolean obtenerNomArtista(String nombre) {
 
         if (arbolArtistas.buscar(nombre) == null) {
             return false;
         } else {
-            if (arbolArtistas.buscar(nombre).getCodigo().equals(cod)) {
+            if (arbolArtistas.buscar(nombre).getNombre().equals(nombre)) {
                 return true;
             }
         }

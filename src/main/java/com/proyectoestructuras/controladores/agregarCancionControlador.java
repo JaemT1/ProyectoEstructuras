@@ -79,20 +79,20 @@ public class agregarCancionControlador implements Initializable {
     @FXML
     void eliminarCancion(ActionEvent event) {
 
-        String cod = txtCodEliminar.getText();
+        String nom = txtCodEliminar.getText();
         /*
         Verifica si el código de la canción ingresado existe
          */
-        boolean verificarCodigo = singleton.obtenerCodigo(cod);
+        boolean verificarNom = singleton.obtenerNom(nom);
 
         /*
         Verifica si ingresó un código en el campo de texto.
          */
-        if (datosValidosEliminar(cod)) {
-            String msj = singleton.eliminarCancion(cod);
-            if (verificarCodigo) {
+        if (datosValidosEliminar(nom)) {
+            String msj = singleton.eliminarCancion(nom);
+            if (verificarNom) {
                 if (msj.equalsIgnoreCase("Canción eliminada.")) {
-                    repositorioCancionesFavoritas.eliminarCancionFavorita(cod);
+                    singleton.getTienda().getRepositorio().eliminarCancionFavorita(nom);
                     singleton.mostrarMensaje("Canción eliminada", "Canción eliminada",
                             "La canción se ha eliminado correctamente", Alert.AlertType.INFORMATION);
                     limpiar();

@@ -95,9 +95,10 @@ public class agregarArtistaControlador implements Initializable {
             }
 
         }
+        singleton.serializarBinario();
     }
 
-    /* Evento del botón agregar artista, se llama al método eliminarArtista.*/
+    /* Evento del botón agregar artista, se llama al método crearArtista.*/
     @FXML
     void agregarArtista(ActionEvent event) {
         crearArtista();
@@ -122,7 +123,7 @@ public class agregarArtistaControlador implements Initializable {
         }
 
         /* Se verifica que el artista no exista -> mediante el nombre y el codigo. */
-        boolean verificar = singleton.obtenerCodigoArtista(nombreArtista, codigo);
+        boolean verificar = singleton.obtenerNomArtista(nombreArtista);
 
         if (datosValidos(codigo, nombreArtista, nacionalidad, grupo)) {
             String artista = singleton.crearArtista(codigo, nombreArtista, nacionalidad, grupo);
@@ -145,9 +146,8 @@ public class agregarArtistaControlador implements Initializable {
                         Alert.AlertType.ERROR);
                 limpiar();
             }
-
-
         }
+        singleton.serializarBinario();
     }
 
     /* Método para limpiar los campos una vez se agrega, elimina o modifica el artista.*/
@@ -202,7 +202,7 @@ public class agregarArtistaControlador implements Initializable {
         /* Se captura que el código del artista mediante el nombre. */
         String codigoAuxiliar = singleton.obtenerCodArtista(nombre);
         /* Se verifica que el artista exista -> mediante el nombre y el codigo. */
-        boolean verificarCodigo = singleton.obtenerCodigoArtista(nombre, codigoAuxiliar);
+        boolean verificarCodigo = singleton.obtenerNomArtista(nombre);
 
         if (datosValidosEliminar(nombre)) {
             String mensaje = singleton.eliminarArtista(nombre);
@@ -210,16 +210,19 @@ public class agregarArtistaControlador implements Initializable {
                 if (mensaje.equalsIgnoreCase("Artista eliminado.")) {
                     singleton.mostrarMensaje("Artista eliminado", "Artista eliminado",
                             "El artista se ha eliminado correctamente", Alert.AlertType.INFORMATION);
+                    limpiar();
                 } else {
                     singleton.mostrarMensaje("Artista no eliminado", "Artista no eliminado",
                             mensaje, Alert.AlertType.WARNING);
+                    limpiar();
                 }
             } else {
                 singleton.mostrarMensaje("Artista no encontrado", "Artista no encontrado",
                         "El artista no se ha encontrado", Alert.AlertType.WARNING);
+                limpiar();
             }
         }
-
+        singleton.serializarBinario();
     }
 
 

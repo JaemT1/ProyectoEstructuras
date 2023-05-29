@@ -99,7 +99,7 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="25.0">
                <image>
-                  <Image url="@../../../../../../../../../../Users/isa20/Downloads/eliminar.png" />
+                  <Image url="@../imagenes/eliminar.png" />
                </image>
             </ImageView>
          </graphic>

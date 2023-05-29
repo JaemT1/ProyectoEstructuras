@@ -111,7 +111,7 @@
               </image>
           </ImageView>
       <Label layoutX="511.0" layoutY="109.0" text="¿Desea eliminar una canción?" />
-      <TextField fx:id="txtCodEliminar" alignment="CENTER" layoutX="499.0" layoutY="143.0" prefHeight="26.0" prefWidth="180.0" promptText="Ingrese el código de la canción" />
+      <TextField fx:id="txtCodEliminar" alignment="CENTER" layoutX="499.0" layoutY="143.0" prefHeight="26.0" prefWidth="180.0" promptText="Ingrese el nombre de la canción" />
       <Button fx:id="btnEliminarCancion" layoutX="521.0" layoutY="184.0" mnemonicParsing="false" onAction="#eliminarCancion" prefHeight="34.0" prefWidth="135.0" style="-fx-background-color: white;" text="Eliminar canción" textAlignment="RIGHT" wrapText="true">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="21.0">
