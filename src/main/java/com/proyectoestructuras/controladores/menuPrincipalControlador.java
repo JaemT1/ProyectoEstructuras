@@ -48,6 +48,10 @@ public class menuPrincipalControlador implements Initializable {
     boolean auxY = false;
 
     @FXML
+    private Button btnArtistaPopular;
+    @FXML
+    private Button btnGeneroPopular;
+    @FXML
     private Button btnAgregarArtista;
 
     @FXML
@@ -241,6 +245,60 @@ public class menuPrincipalControlador implements Initializable {
 
 
     @FXML
+    void consultarArtistaPopular(ActionEvent event) {
+
+    }
+
+    @FXML
+    void consultarGeneroPopular(ActionEvent event) {
+
+
+        String genero = "";
+        int contRock = 0;
+        int contPunk = 0;
+        int contElect = 0;
+        int contReg = 0;
+        int contPop = 0;
+
+
+        for (int i = 0; i < listaCanciones.size(); i++) {
+
+            Cancion cancion = listaCanciones.get(i);
+
+            if (cancion.getGenero().equalsIgnoreCase("Rock")) {
+                contRock++;
+            } else if (cancion.getGenero().equalsIgnoreCase("Punk")) {
+                contPunk++;
+            } else if (cancion.getGenero().equalsIgnoreCase("Electronica")) {
+                contElect++;
+            } else if (cancion.getGenero().equalsIgnoreCase("Reggaeton")) {
+                contReg++;
+            } else if (cancion.getGenero().equalsIgnoreCase("Pop")) {
+                contPop++;
+            }
+        }
+
+        if (contRock > contPunk && contRock > contElect && contRock > contReg && contRock > contPop) {
+            genero = "Rock";
+        } else if (contPunk > contRock && contPunk > contElect && contPunk > contReg && contPunk > contPop) {
+            genero = "Punk";
+        } else if (contElect > contRock && contElect > contPunk && contElect > contReg && contElect > contPop) {
+            genero = "Electronica";
+        } else if (contReg > contRock && contReg > contPunk && contReg > contElect && contReg > contPop) {
+            genero = "Reggaeton";
+        } else if (contPop > contRock && contPop > contPunk && contPop > contElect && contPop > contReg) {
+            genero = "Pop";
+        } else {
+            genero = "No hay genero popular";
+        }
+
+        singleton.mostrarMensaje("Género popular", "Género popular", "El género más popular es: " + genero, Alert.AlertType.INFORMATION);
+
+
+    }
+
+
+    @FXML
     void agregarAFavoritos(ActionEvent event) {
 
         if (!singleton.getTienda().getRepositorio().getListaCancionesFavoritas().contains(cancion)) {
@@ -255,14 +313,14 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void agregarArtista(ActionEvent event) {
 
-        singleton.mostrarVentana("Agregar Artista", "/views/agregarArtista.fxml",400,100);
+        singleton.mostrarVentana("Agregar Artista", "/views/agregarArtista.fxml", 400, 100);
 
     }
 
     @FXML
     void agregarCancion(ActionEvent event) {
 
-        singleton.mostrarVentana("Agregar Canción", "/views/agregarCancion.fxml",400,100);
+        singleton.mostrarVentana("Agregar Canción", "/views/agregarCancion.fxml", 400, 100);
 
     }
 
@@ -364,7 +422,7 @@ public class menuPrincipalControlador implements Initializable {
 
     @FXML
     void cancionesFavoritas(ActionEvent event) {
-        singleton.mostrarVentana("Canciones Favoritas", "/views/misFavoritos.fxml",200,40);
+        singleton.mostrarVentana("Canciones Favoritas", "/views/misFavoritos.fxml", 200, 40);
 
     }
 
@@ -375,6 +433,7 @@ public class menuPrincipalControlador implements Initializable {
         int id = Integer.parseInt(prueba.getText());
 
         if (!bandera) {
+
             for (int i = 0; i < listaCanciones.size(); i++) {
                 Image img = new Image(listaCanciones.get(i).getCaratula().getPath());
                 if (imagenes.get(id).getImage().getUrl().equals(img.getUrl())) {
@@ -490,6 +549,7 @@ public class menuPrincipalControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         singleton.cargarBinario();
         listaCanciones = singleton.getTienda().getListaCanciones();
         treeViewFiltros.setRoot(agregarElementos());

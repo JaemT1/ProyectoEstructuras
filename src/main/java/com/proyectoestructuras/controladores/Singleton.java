@@ -154,6 +154,14 @@ public class Singleton {
         return tienda.obtenerArtista(nombre);
     }
 
+    public boolean obtenerNomCancion(String nombreCancion) {
+        return tienda.obtenerNomCancion(nombreCancion);
+    }
+
+    public String actualizarCancion(String codigo, String nombreCancion, String nombreAlbum, File file, String anio, String duracion, String genero, String url, String nombreArtista) {
+    return tienda.actualizarCancion(codigo,nombreCancion,nombreAlbum,file,anio,duracion,genero,url,nombreArtista);
+    }
+
     private static class SingletonHolder {
         private final static Singleton eINSTANCE = new Singleton();
     }

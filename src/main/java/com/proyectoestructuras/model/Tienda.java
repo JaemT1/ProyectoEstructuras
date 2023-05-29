@@ -228,7 +228,7 @@ public class Tienda implements Serializable {
      * Se busca en la lista de canciones mediante el código,
      * si no la encuentra, la crea y la agrega a la lista de canciones y a la lista de canciones del artista.
      */
-    public String crearCancion(String codigo, String nombreCancion, String nombreAlbum,File Filen, String anio, String duracion, String genero, String url, String nombreArtista) {
+    public String crearCancion(String codigo, String nombreCancion, String nombreAlbum, File Filen, String anio, String duracion, String genero, String url, String nombreArtista) {
 
         String resultado = "";
         Cancion cancionEncontrada;
@@ -440,5 +440,44 @@ public class Tienda implements Serializable {
     }
 
 
+    public boolean obtenerNomCancion(String nombreCancion) {
 
+        for (int i = 0; i < listaCanciones.size(); i++) {
+            if (listaCanciones.get(i).getNombre().equalsIgnoreCase(nombreCancion)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String actualizarCancion(String codigo, String nombreCancion, String nombreAlbum, File file, String anio, String duracion, String genero, String url, String nombreArtista) {
+
+        //Cancion cancion = buscarCancionNombre(nombreCancion);
+        String mensaje = "";
+        for (int i = 0; i <listaCanciones.size() ; i++) {
+            if(listaCanciones.get(i).getNombre().equalsIgnoreCase(nombreCancion)){
+                listaCanciones.get(i).setCodigo(codigo);
+                listaCanciones.get(i).setNombreAlbum(nombreAlbum);
+                listaCanciones.get(i).setCaratula(file);
+                listaCanciones.get(i).setAnio(anio);
+                listaCanciones.get(i).setDuracion(duracion);
+                listaCanciones.get(i).setGenero(genero);
+                listaCanciones.get(i).setUrl(url);
+                listaCanciones.get(i).setNombreArtista(nombreArtista);
+                mensaje = "Canción actualizada.";
+                break;
+            }
+        }
+        return mensaje;
+    }
+
+    private Cancion buscarCancionNombre(String nombreCancion) {
+
+        for (int i = 0; i <listaCanciones.size() ; i++) {
+            if(listaCanciones.get(i).getNombre().equalsIgnoreCase(nombreCancion)){
+                return listaCanciones.get(i);
+            }
+        }
+        return null;
+    }
 }

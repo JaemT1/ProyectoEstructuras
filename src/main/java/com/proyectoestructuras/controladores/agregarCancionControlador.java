@@ -205,7 +205,7 @@ public class agregarCancionControlador implements Initializable {
                         singleton.setPresionado(true);
 
                         if (action.get() == ButtonType.OK) {
-                            singleton.mostrarVentana("Agregar artista", "/views/agregarArtista.fxml",400,100);
+                            singleton.mostrarVentana("Agregar artista", "/views/agregarArtista.fxml", 400, 100);
                         }
 
                         limpiar();
@@ -309,7 +309,7 @@ public class agregarCancionControlador implements Initializable {
      */
     @FXML
     void regresarMenu(ActionEvent event) {
-        singleton.mostrarVentana("MenuPrincipal", "/views/menuPrincipal.fxml",80,30);
+        singleton.mostrarVentana("MenuPrincipal", "/views/menuPrincipal.fxml", 80, 30);
 
     }
 

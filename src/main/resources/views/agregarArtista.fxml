@@ -33,7 +33,7 @@
                     </graphic></Button>
             </children>
         </AnchorPane>
-        <AnchorPane layoutY="259.0" prefHeight="188.0" prefWidth="707.0" style="-fx-background-color: #808B96;">
+        <AnchorPane layoutY="259.0" prefHeight="188.0" prefWidth="707.0" style="-fx-background-color: white;">
             <children>
                 <Button fx:id="btnAgregarArtista" layoutX="34.0" layoutY="139.0" mnemonicParsing="false" onAction="#agregarArtista" prefHeight="34.0" prefWidth="157.0" style="-fx-background-color: #808B96; -fx-text-fill: white;" text="Agregar artista" textAlignment="RIGHT" wrapText="true">
                     <graphic>
