@@ -3,7 +3,8 @@ package com.proyectoestructuras.persistencia;
 import com.proyectoestructuras.model.Tienda;
 
 public class persistencia {
-    public static final String RUTA_ARCHIVO_MODELO_TIENDA_BINARIO = "src/persistencia/model.dat";
+    public static final String RUTA_ARCHIVO_MODELO_TIENDA_BINARIO = "C:\\Users\\Juan Tunubala\\IdeaProjects\\ProyectoEstructuras\\src\\main\\resources\\model.dat";
+
     public static final String RUTA_ARCHIVO_MODELO_TIENDA_XML = "src/persistencia/model.xml";
 
     // ------------------------------------SERIALIZACION y XML----------------------------------------------------------

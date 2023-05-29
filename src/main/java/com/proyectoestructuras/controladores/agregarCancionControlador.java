@@ -6,10 +6,7 @@ import com.proyectoestructuras.model.Tienda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -31,6 +28,8 @@ public class agregarCancionControlador implements Initializable {
     boolean registrado = singleton.isRegistrado();
 
     RepositorioCancionesFavoritas repositorioCancionesFavoritas;
+
+    ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
 
     @FXML
     private Button btnAgregarCancion;
@@ -108,6 +107,7 @@ public class agregarCancionControlador implements Initializable {
                 limpiar();
             }
         }
+        singleton.serializarBinario();
     }
 
     /*
@@ -155,6 +155,8 @@ public class agregarCancionControlador implements Initializable {
         String codigo = txtCodigo.getText();
         /* Se verifica si el código de la canción existe.*/
         boolean verificarCodigo = singleton.obtenerCodigo(codigo);
+        Image img = imageViewCancion.getImage();
+
 
         /*
         Se verifica si ya se ha subido una imagen.
@@ -164,8 +166,9 @@ public class agregarCancionControlador implements Initializable {
             /*
             Se verifica si los datos ingresados son válidos.
              */
-            if (datosValidosCancion(codigo, nombreCancion, nombreAlbum, imageViewCancion.getImage(), anio, duracion, genero, url, nombreArtista)) {
-                String cancion = singleton.crearCancion(codigo, nombreCancion, nombreAlbum, imageViewCancion.getImage(), anio, duracion, genero, url, nombreArtista);
+            if (datosValidosCancion(codigo, nombreCancion, nombreAlbum, img, anio, duracion, genero, url, nombreArtista)) {
+                File file = new File(imageViewCancion.getImage().getUrl());
+                String cancion = singleton.crearCancion(codigo, nombreCancion, nombreAlbum, file, anio, duracion, genero, url, nombreArtista);
 
                 /*
                 Se verifica si la canción no existe, si no existe se crea.
@@ -222,24 +225,24 @@ public class agregarCancionControlador implements Initializable {
             singleton.mostrarMensaje("Canción inválida", "Canción no creada",
                     "Debe subir una imagen para agregar la canción", Alert.AlertType.WARNING);
         }
-        //singleton.serializarBinario();
+        singleton.serializarBinario();
 
     }
 
     /*
     Método que carga una imagen.
      */
-    private Image obtenerImagen() {
+    private File obtenerImagen() {
 
         FileChooser cargarImg = new FileChooser();
         cargarImg.setTitle("Insertar imagen");
-        cargarImg.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"));
+        cargarImg.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Archivos perzonalizados", "*.jpg; *.png;*.jpeg"));
         File archivo = cargarImg.showOpenDialog(new Stage());
 
         if (archivo != null) {
 
-            Image img = new Image("file:" + archivo.getAbsolutePath());
-            return img;
+            Image img = new Image("file:" + archivo.getPath());
+            return archivo;
 
         }
 
@@ -317,9 +320,8 @@ public class agregarCancionControlador implements Initializable {
     void subirImagen(ActionEvent event) {
 
         presionado = true;
-        Image imagen = obtenerImagen();
+        Image imagen = new Image("file:" + obtenerImagen().getPath());
         imageViewCancion.setImage(imagen);
-
 
     }
 

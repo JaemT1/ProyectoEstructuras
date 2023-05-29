@@ -1,23 +1,26 @@
 package com.proyectoestructuras.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RepositorioCancionesFavoritas {
-    private static ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
+public class RepositorioCancionesFavoritas implements Serializable {
+    private  ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
 
-    public static ArrayList<Cancion> getListaCancionesFavoritas() {
+    public  ArrayList<Cancion> getListaCancionesFavoritas() {
         return listaCancionesFavoritas;
     }
 
-    public static void setListaCancionesFavoritas(ArrayList<Cancion> listaCancionesFavoritas) {
-        RepositorioCancionesFavoritas.listaCancionesFavoritas = listaCancionesFavoritas;
+    public RepositorioCancionesFavoritas(){
+    }
+    public void setListaCancionesFavoritas(ArrayList<Cancion> listaCancionesFavoritas) {
+        listaCancionesFavoritas = listaCancionesFavoritas;
     }
 
-    public static void agregarCancionFavorita(Cancion cancion) {
+    public  void agregarCancionFavorita(Cancion cancion) {
         listaCancionesFavoritas.add(cancion);
     }
 
-    public static void eliminarCancionFavorita(String cod) {
+    public  void eliminarCancionFavorita(String cod) {
 
         for (int i = 0; i <listaCancionesFavoritas.size() ; i++) {
             if(listaCancionesFavoritas.get(i).getCodigo().equalsIgnoreCase(cod)){
@@ -25,5 +28,7 @@ public class RepositorioCancionesFavoritas {
             }
         }
     }
+
+
 
 }

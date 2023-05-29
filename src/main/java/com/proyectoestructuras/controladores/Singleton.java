@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Singleton {
@@ -28,6 +29,13 @@ public class Singleton {
 
     Image imagen;
 
+    public Tienda getTienda() {
+        return tienda;
+    }
+
+    public void setTienda(Tienda tienda) {
+        this.tienda = tienda;
+    }
 
     public boolean isArtistaRegistrado() {
         return artistaRegistrado;
@@ -92,7 +100,7 @@ public class Singleton {
 
     }
 
-    public String crearCancion(String codigo, String nombreCancion, String nombreAlbum, Image imagen, String anio, String duracion, String genero, String url, String nombreArtista) {
+    public String crearCancion(String codigo, String nombreCancion, String nombreAlbum, File imagen, String anio, String duracion, String genero, String url, String nombreArtista) {
 
         return tienda.crearCancion(codigo, nombreCancion, nombreAlbum, imagen, anio, duracion, genero, url, nombreArtista);
     }
@@ -177,6 +185,10 @@ public class Singleton {
 
     public void serializarBinario(){
         persistencia.guardarRecursoTiendaBinario(tienda);
+    }
+
+    public void cargarBinario(){
+        tienda = persistencia.cargarRecursoTiendaBinario();
     }
 
     public void setLinkYoutube(String linkYoutube) {

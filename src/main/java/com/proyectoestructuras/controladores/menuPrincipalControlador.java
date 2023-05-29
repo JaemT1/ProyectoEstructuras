@@ -34,7 +34,7 @@ public class menuPrincipalControlador implements Initializable {
     ArrayList<Cancion> canciones = new ArrayList<>();
     ArrayList<Image> imagenesIniciales = new ArrayList<>();
 
-    ArrayList<Cancion> listaCanciones = singleton.obtenerListaCanciones();
+    ArrayList<Cancion> listaCanciones = singleton.getTienda().getListaCanciones();
 
     ArrayList<Cancion> listaCancionesFavoritas = new ArrayList<>();
     static boolean bandera = false;
@@ -243,12 +243,13 @@ public class menuPrincipalControlador implements Initializable {
     @FXML
     void agregarAFavoritos(ActionEvent event) {
 
-        if (!RepositorioCancionesFavoritas.getListaCancionesFavoritas().contains(cancion)) {
-            RepositorioCancionesFavoritas.agregarCancionFavorita(cancion);
+        if (!singleton.getTienda().getRepositorio().getListaCancionesFavoritas().contains(cancion)) {
+            singleton.getTienda().getRepositorio().agregarCancionFavorita(cancion);
             singleton.mostrarMensaje("Información", "Agregar a favoritos", "La canción ha sido agregada a favoritos", Alert.AlertType.INFORMATION);
         } else {
             singleton.mostrarMensaje("Información", "Agregar a favoritos", "La canción ya está en favoritos", Alert.AlertType.WARNING);
         }
+        singleton.serializarBinario();
     }
 
     @FXML
@@ -293,7 +294,8 @@ public class menuPrincipalControlador implements Initializable {
 
         for (int i = 0; i < imagenes.size(); i++) {
             if (i < cantidad) {
-                imagenes.get(i).setImage(canciones.get(i).getCaratula());
+                Image imgAux = new Image(canciones.get(i).getCaratula().getPath());
+                imagenes.get(i).setImage(imgAux);
                 botones.get(i).setVisible(true);
                 imagenes.get(i).setOpacity(100);
             } else {
@@ -335,7 +337,8 @@ public class menuPrincipalControlador implements Initializable {
             if (listaCanciones.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 titulo.setText("Búsqueda de canción");
                 for (int j = 1; j < imagenes.size(); j++) {
-                    imagenes.get(0).setImage(listaCanciones.get(i).getCaratula());
+                    Image imgAux = new Image(listaCanciones.get(i).getCaratula().getPath());
+                    imagenes.get(0).setImage(imgAux);
                     imagenes.get(j).setOpacity(0);
                     botones.get(j).setVisible(false);
                 }
@@ -371,7 +374,8 @@ public class menuPrincipalControlador implements Initializable {
 
         if (!bandera) {
             for (int i = 0; i < listaCanciones.size(); i++) {
-                if (imagenes.get(id).getImage().equals(listaCanciones.get(i).getCaratula())) {
+                Image img = new Image(listaCanciones.get(i).getCaratula().getPath());
+                if (imagenes.get(id).getImage().getUrl().equals(img.getUrl())) {
                     mostrarInformacion(listaCanciones.get(i).getIndice());
                     linkYoutube = listaCanciones.get(i).getUrl();
                     cancion = listaCanciones.get(i);
@@ -386,7 +390,8 @@ public class menuPrincipalControlador implements Initializable {
                 int aux2 = Integer.parseInt(imagenes.get(i).getAccessibleText());
                 if (id == aux2) {
                     for (int j = 0; j < canciones.size(); j++) {
-                        if (aux.equals(canciones.get(j).getCaratula())) {
+                        Image img = new Image(canciones.get(j).getCaratula().getPath());
+                        if (aux.getUrl().equals(img.getUrl())) {
                             mostrarInformacion(canciones.get(j).getIndice());
                             linkYoutube = listaCanciones.get(j).getUrl();
                             cancion = listaCanciones.get(j);
@@ -460,14 +465,13 @@ public class menuPrincipalControlador implements Initializable {
     }
 
     private void mostrarInformacion(int indice) {
-        tienda = new Tienda();
-
+        //tienda = new Tienda();
         //Cada boton tiene asignada una cancion en especifico,
         // por lo tanto se pasa por parametro el indice de donde se encuentra dicha cancion en la lista.
 
         if (indice >= 0 && indice < listaCanciones.size()) {
             String infoAux = listaCanciones.get(indice).toString();
-            Image imageAux = listaCanciones.get(indice).getCaratula();
+            Image imageAux = new Image(listaCanciones.get(indice).getCaratula().getPath());
             info.opacityProperty().setValue(100);
             infoCancion.opacityProperty().setValue(100);
             infoCancion.setText(infoAux);
@@ -484,6 +488,9 @@ public class menuPrincipalControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        singleton.cargarBinario();
+        listaCanciones = singleton.getTienda().getListaCanciones();
         treeViewFiltros.setRoot(agregarElementos());
         inicializarImagenes();
 
@@ -492,7 +499,8 @@ public class menuPrincipalControlador implements Initializable {
         }
 
         for (int i = 0; i < imagenes.size(); i++) {
-            imagenes.get(i).setImage(listaCanciones.get(i).getCaratula());
+            Image imgAux = new Image(listaCanciones.get(i).getCaratula().getPath());
+            imagenes.get(i).setImage(imgAux);
         }
 
         imagenesIniciales.add(imageView11.getImage());
@@ -713,7 +721,8 @@ public class menuPrincipalControlador implements Initializable {
 
         // Establecer las canciones ordenadas en las ImageView
         for (int i = 0; i < aux.size() && i < imagenes.size(); i++) {
-            imagenes.get(i).setImage(aux.get(i).getCaratula());
+            Image imgAux = new Image(aux.get(i).getCaratula().getPath());
+            imagenes.get(i).setImage(imgAux);
             imagenes.get(i).setOpacity(100);
             botones.get(i).setVisible(true);
         }

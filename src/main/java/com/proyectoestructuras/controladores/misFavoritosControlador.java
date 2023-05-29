@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 import java.awt.*;
+import java.io.File;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class misFavoritosControlador implements Initializable {
     Singleton singleton = Singleton.getInstance();
     ArrayList<ImageView> imagenes = new ArrayList<>();
     ArrayList<Button> botones = new ArrayList<>();
-    ArrayList<Cancion> cancionesFavoritas = RepositorioCancionesFavoritas.getListaCancionesFavoritas();
+    ArrayList<Cancion> cancionesFavoritas = singleton.getTienda().getRepositorio().getListaCancionesFavoritas();
 
     ArrayList<Image> imagenesIniciales = new ArrayList<>();
 
@@ -213,7 +214,8 @@ public class misFavoritosControlador implements Initializable {
 
             for (int i = 0; i < imagenes.size(); i++) {
                 if (i < cancionesFavoritas.size()) {
-                    imagenes.get(i).setImage(cancionesFavoritas.get(i).getCaratula());
+                    Image imgAux = new Image(cancionesFavoritas.get(i).getCaratula().getPath());
+                    imagenes.get(i).setImage(imgAux);
                     imagenes.get(i).setAccessibleText(String.valueOf(cancionesFavoritas.get(i).getIndice()));
                     botones.get(i).setText(String.valueOf(cancionesFavoritas.get(i).getIndice()));
                 } else {
@@ -221,6 +223,7 @@ public class misFavoritosControlador implements Initializable {
                 }
             }
         }
+        singleton.serializarBinario();
     }
 
     @FXML
@@ -252,7 +255,8 @@ public class misFavoritosControlador implements Initializable {
         if (cancionesFavoritas.size() > 16) {
             for (int i = 0; i < imagenes.size(); i++) {
                 if (j < cancionesFavoritas.size()) {
-                    imagenes.get(i).setImage(cancionesFavoritas.get(j).getCaratula());
+                    Image imgAux = new Image(cancionesFavoritas.get(j).getCaratula().getPath());
+                    imagenes.get(i).setImage(imgAux);
                     j++;
                 }else{
                     imagenes.get(i).setImage(null);
@@ -269,7 +273,7 @@ public class misFavoritosControlador implements Initializable {
 
         if (indice >= 0 && indice < cancionesFavoritas.size()) {
             String infoAux = cancionesFavoritas.get(indice).toString();
-            Image imageAux = cancionesFavoritas.get(indice).getCaratula();
+            Image imageAux = new Image(cancionesFavoritas.get(indice).getCaratula().getPath());
             info.opacityProperty().setValue(100);
             infoCancion.opacityProperty().setValue(100);
             infoCancion.setText(infoAux);
@@ -370,7 +374,8 @@ public class misFavoritosControlador implements Initializable {
         if (!cancionesFavoritas.isEmpty()) {
             int j = 0;
             for (int i = 0; i < imagenes.size() && j < cancionesFavoritas.size(); i++, j++) {
-                imagenes.get(i).setImage(cancionesFavoritas.get(j).getCaratula());
+                Image imgAux = new Image(cancionesFavoritas.get(j).getCaratula().getPath());
+                imagenes.get(i).setImage(imgAux);
             }
         }
 

@@ -2,6 +2,7 @@ package com.proyectoestructuras.model;
 
 import javafx.scene.image.Image;
 
+import java.io.File;
 import java.io.Serializable;
 
 public class Cancion implements Serializable {
@@ -9,7 +10,7 @@ public class Cancion implements Serializable {
     private String codigo;
     private String nombre;
     private String nombreAlbum;
-    private Image caratula;
+    private File caratula;
     private String anio;
     private String duracion;
     private String genero;
@@ -17,7 +18,7 @@ public class Cancion implements Serializable {
     private String nombreArtista;
     private int indice;
 
-    public Cancion(String codigo, String nombre, String nombreAlbum, Image caratula, String anio, String duracion, String genero, String url, String nombreArtista, int indice) {
+    public Cancion(String codigo, String nombre, String nombreAlbum, File caratula, String anio, String duracion, String genero, String url, String nombreArtista, int indice) {
         super();
         this.codigo = codigo;
         this.nombre = nombre;
@@ -55,11 +56,11 @@ public class Cancion implements Serializable {
         this.nombreAlbum = nombreAlbum;
     }
 
-    public Image getCaratula() {
+    public File getCaratula() {
         return caratula;
     }
 
-    public void setCaratula(Image caratula) {
+    public void setCaratula(File caratula) {
         this.caratula = caratula;
     }
 
