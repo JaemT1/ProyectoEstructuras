@@ -29,6 +29,7 @@ public class Singleton {
 
     Image imagen;
 
+
     public Tienda getTienda() {
         return tienda;
     }

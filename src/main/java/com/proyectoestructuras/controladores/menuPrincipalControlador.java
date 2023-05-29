@@ -21,6 +21,7 @@ import java.awt.*;
 import java.net.URI;
 import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 
 public class menuPrincipalControlador implements Initializable {
@@ -47,8 +48,6 @@ public class menuPrincipalControlador implements Initializable {
     boolean auxO = false;
     boolean auxY = false;
 
-    @FXML
-    private Button btnArtistaPopular;
     @FXML
     private Button btnGeneroPopular;
     @FXML
@@ -244,10 +243,6 @@ public class menuPrincipalControlador implements Initializable {
     private CheckBox anio7 = new CheckBox("2016 - 2026");
 
 
-    @FXML
-    void consultarArtistaPopular(ActionEvent event) {
-
-    }
 
     @FXML
     void consultarGeneroPopular(ActionEvent event) {

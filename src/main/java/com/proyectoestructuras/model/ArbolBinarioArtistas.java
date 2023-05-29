@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ArbolBinarioArtistas implements Serializable {
 
+    private int tamanio = 0;
     private NodoArtista raiz; // Referencia a la raíz del árbol
 
     // Constructor del árbol
@@ -20,6 +21,7 @@ public class ArbolBinarioArtistas implements Serializable {
     public void insertar(Artista artista) {
         raiz = insertar(raiz, artista);
     }
+
 
     // Inserta un nuevo artista en el árbol a partir de un nodo dado
     private NodoArtista insertar(NodoArtista nodo, Artista artista) {
